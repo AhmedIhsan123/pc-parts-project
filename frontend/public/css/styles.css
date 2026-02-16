@@ -1,128 +1,69 @@
+/* =========================================
+   GLOBAL DESIGN SYSTEM — SurgeForge
+   ========================================= */
+
+/* ---------- CSS VARIABLES ---------- */
+
 :root {
-    --bg: #020617;
-    --panel: #020617;
-    --card: #111827;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #38bdf8;
-    --border: rgba(255, 255, 255, 0.08);
+  /* Brand Colors */
+  --color-primary: #F97316;       
+  --color-primary-hover: #FB923C; 
+  --color-accent-deep: #D97706;    
+  /* Backgrounds */
+  --bg-main: #0A0A0C;
+  --bg-surface: #121216;
+  --bg-surface-hover: #18181C;
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B3B3B8;
+  --text-muted: #7C7C84;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Glow */
+  --glow-primary: 0 0 25px rgba(249, 115, 22, 0.2);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Transition */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s ease;
 }
 
+/* =========================================
+   RESET
+   ========================================= */
+
 * {
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(180deg, #020617, #020617 280px, #0f172a);
-    color: var(--text);
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ===== Hero ===== */
 
-.hero {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3rem 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
 
-@media (min-width: 900px) {
-    .hero {
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
-    }
-}
 
-.hero-content h1 {
-    margin: 0;
-    font-size: 2.6rem;
-}
-
-.hero-content p {
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
-    color: var(--muted);
-}
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image img {
-    max-width: 100%;
-    border-radius: 14px;
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.6),
-        0 0 0 1px var(--border);
-}
-
-/* ===== Layout ===== */
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-}
-
-/* ===== Card ===== */
-
-.card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 2rem;
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.5),
-        0 0 0 1px var(--border);
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-ul {
-    padding-left: 1.2rem;
-}
-
-li {
-    margin-bottom: 0.4rem;
-}
-
-code {
-    background: #020617;
-    padding: 0.25rem 0.45rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
-}
-
-/* ===== Buttons ===== */
-
-.button {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.6rem 1.3rem;
-    border-radius: 8px;
-    background: var(--accent);
-    color: #020617;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.button.secondary {
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-}
-
-/* ===== Footer ===== */
-
-.footer {
-    text-align: center;
-    padding: 2.5rem 1rem;
-    color: var(--muted);
-    font-size: 0.9rem;
-}
