@@ -5,41 +5,41 @@
 /* ---------- CSS VARIABLES ---------- */
 
 :root {
-  /* Brand Colors */
-  --color-primary: #F97316;       
-  --color-primary-hover: #FB923C; 
-  --color-accent-deep: #D97706;    
-  /* Backgrounds */
-  --bg-main: #0A0A0C;
-  --bg-surface: #121216;
-  --bg-surface-hover: #18181C;
+	/* Brand Colors */
+	--color-primary: #f97316;
+	--color-primary-hover: #fb923c;
+	--color-accent-deep: #d97706;
+	/* Backgrounds */
+	--bg-main: #0a0a0c;
+	--bg-surface: #121216;
+	--bg-surface-hover: #18181c;
 
-  /* Text */
-  --text-primary: #FFFFFF;
-  --text-secondary: #B3B3B8;
-  --text-muted: #7C7C84;
+	/* Text */
+	--text-primary: #ffffff;
+	--text-secondary: #b3b3b8;
+	--text-muted: #7c7c84;
 
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
+	/* Borders */
+	--border-subtle: rgba(255, 255, 255, 0.06);
 
-  /* Glow */
-  --glow-primary: 0 0 25px rgba(249, 115, 22, 0.2);
+	/* Glow */
+	--glow-primary: 0 0 25px rgba(249, 115, 22, 0.2);
 
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 32px;
-  --spacing-xl: 64px;
+	/* Spacing */
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 16px;
+	--spacing-lg: 32px;
+	--spacing-xl: 64px;
 
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+	/* Radius */
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 14px;
 
-  /* Transition */
-  --transition-fast: 0.2s ease;
-  --transition-smooth: 0.3s ease;
+	/* Transition */
+	--transition-fast: 0.2s ease;
+	--transition-smooth: 0.3s ease;
 }
 
 /* =========================================
@@ -47,23 +47,19 @@
    ========================================= */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 html {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+	font-family: "JetBrains Mono", Arial, sans-serif;
+	background-color: var(--bg-main);
+	color: var(--text-primary);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
 }
-
-
-
-

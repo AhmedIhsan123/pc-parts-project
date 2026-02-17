@@ -1,0 +1,93 @@
+/* =========================================
+   NAVIGATION — SurgeForge
+   ========================================= */
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 0 var(--spacing-lg);
+	height: 64px;
+
+	background-color: var(--bg-surface);
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ---------- Logo ---------- */
+
+.logo {
+	font-size: 1.4rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+
+	user-select: none; /* Prevent text highlighting */
+	cursor: default; /* No pointer cursor */
+}
+
+.logo-surge {
+	color: var(--text-primary);
+}
+
+.logo-forge {
+	color: var(--color-primary);
+}
+
+/* ---------- Navigation Links ---------- */
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-lg);
+}
+
+.nav-links a {
+	font-size: 0.95rem;
+	font-weight: 500;
+
+	color: var(--text-secondary);
+	text-decoration: none;
+
+	position: relative;
+	transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+	color: var(--text-primary);
+}
+
+.nav-links a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -4px;
+
+	width: 0%;
+	height: 2px;
+
+	background-color: var(--color-primary);
+	transition: width var(--transition-fast);
+}
+
+.nav-links a:hover::after {
+	width: 100%;
+}
+
+/* ---------- Account Circle ---------- */
+
+.account-circle {
+	width: 36px;
+	height: 36px;
+
+	border-radius: 50%;
+	background-color: var(--bg-surface-hover);
+	border: 1px solid var(--border-subtle);
+
+	transition: all var(--transition-smooth);
+	cursor: pointer;
+}
+
+.account-circle:hover {
+	border-color: var(--color-primary);
+	box-shadow: var(--glow-primary);
+}
