@@ -52,25 +52,29 @@
 	transition: color var(--transition-fast);
 }
 
+/* Change text color on hover */
 .nav-links a:hover {
 	color: var(--text-primary);
 }
 
+/* Underline bar for links (fade-in instead of growing) */
 .nav-links a::after {
 	content: "";
 	position: absolute;
 	left: 0;
 	bottom: -4px;
 
-	width: 0%;
+	width: 100%; /* Full width already */
 	height: 2px;
 
 	background-color: var(--color-primary);
-	transition: width var(--transition-fast);
+	opacity: 0; /* Start invisible */
+	transition: opacity var(--transition-smooth);
 }
 
+/* Fade in underline on hover */
 .nav-links a:hover::after {
-	width: 100%;
+	opacity: 1;
 }
 
 /* ---------- Account Circle ---------- */
