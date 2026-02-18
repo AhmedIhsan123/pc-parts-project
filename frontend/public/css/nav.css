@@ -54,22 +54,7 @@
 
 /* Change text color on hover */
 .nav-links a:hover {
-	color: var(--text-primary);
-}
-
-/* Underline bar for links (fade-in instead of growing) */
-.nav-links a::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -4px;
-
-	width: 100%; /* Full width already */
-	height: 2px;
-
-	background-color: var(--color-primary);
-	opacity: 0; /* Start invisible */
-	transition: opacity var(--transition-smooth);
+	color: var(--color-primary);
 }
 
 /* Fade in underline on hover */
