@@ -1,26 +1,26 @@
 {
-    "name": "express-api-starter",
-    "version": "1.0.0",
-    "description": "Introductory Node.js and Express API project",
-    "private": true,
-    "type": "module",
-    "main": "src/server.js",
-    "scripts": {
-        "dev": "nodemon src/server.js",
-        "lint": "eslint .",
-        "test": "echo \"No tests yet\" && exit 0"
-    },
-    "engines": {
-        "node": ">=18"
-    },
-    "dependencies": {
-        "dotenv": "^17.2.3",
-        "ejs": "^3.1.10",
-        "express": "^5.2.1",
-        "node": "^25.6.1"
-    },
-    "devDependencies": {
-        "eslint": "^9.39.2",
-        "nodemon": "^3.1.11"
-    }
+	"name": "SurgeForge",
+	"version": "1.0.0",
+	"description": "SurgeForge is a modern eCommerce web application focused on PC components. The platform is designed to provide users with a streamlined experience for browsing, filtering, and purchasing computer hardware.",
+	"private": true,
+	"type": "module",
+	"main": "src/server.js",
+	"scripts": {
+		"dev": "nodemon src/server.js",
+		"lint": "eslint .",
+		"test": "echo \"No tests yet\" && exit 0"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"ejs": "^3.1.10",
+		"express": "^5.2.1",
+		"node": "^25.6.1"
+	},
+	"devDependencies": {
+		"eslint": "^9.39.2",
+		"nodemon": "^3.1.11"
+	}
 }
