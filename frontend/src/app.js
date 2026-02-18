@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routers
 app.use("/", (req, res) => {
-	res.render("landing.ejs");
+	res.render("landing-page/landing.ejs");
 });
 
 export default app;
