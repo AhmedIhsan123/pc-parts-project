@@ -18,7 +18,254 @@
 	</head>
 	<body>
 		<header><%- include('../partials/navgation') %></header>
-		<main></main>
-		<footer><%- include('../partials/footer') %></footer>
+
+		<main class="landing">
+			<div class="landing-glow landing-glow--1" aria-hidden="true"></div>
+			<div class="landing-glow landing-glow--2" aria-hidden="true"></div>
+			<div class="landing-glow landing-glow--3" aria-hidden="true"></div>
+			<div class="landing-glow landing-glow--4" aria-hidden="true"></div>
+
+			<!-- HERO -->
+			<section class="hero section" aria-labelledby="hero-heading">
+				<div class="container hero-inner">
+					<p class="hero-badge">
+						<span class="hero-badge__dot" aria-hidden="true"></span>
+						New Arrivals — RTX 50 Series In Stock
+					</p>
+					<h1 id="hero-heading">
+						Build Without Limits.<br />
+						<span class="accent">Forge Performance.</span>
+					</h1>
+					<p class="hero-subtext">
+						Premium GPUs, CPUs, and performance components engineered for
+						gamers, creators, and serious builders.
+					</p>
+					<div class="hero-actions">
+						<a href="/products" class="btn btn-primary">Shop Components</a>
+						<a href="#featured" class="btn btn-secondary">Browse Builds</a>
+					</div>
+					<p class="hero-trust">
+						<span aria-label="5 stars" aria-hidden="true">★★★★★</span>
+						<span>Trusted by <strong>25,000+</strong> builders</span>
+						<span class="hero-trust__sep" aria-hidden="true">·</span>
+						<span>Free shipping over $99</span>
+						<span class="hero-trust__sep" aria-hidden="true">·</span>
+						<span>30-day returns</span>
+					</p>
+				</div>
+			</section>
+
+			<!-- WHY SURGEFORGE -->
+			<section class="pillars section" aria-labelledby="pillars-heading">
+				<h2 id="pillars-heading" class="sr-only">Why SurgeForge</h2>
+				<div class="container">
+					<ul class="pillars-grid" role="list">
+						<li class="pillar">
+							<span class="pillar-icon" aria-hidden="true">⚡</span>
+							<h3>Same-Day Dispatch</h3>
+							<p>Orders placed before 3PM ship out the same day, every day.</p>
+						</li>
+						<li class="pillar">
+							<span class="pillar-icon" aria-hidden="true">🔒</span>
+							<h3>Verified Authentic</h3>
+							<p>
+								Every component is sourced directly from official distributors.
+							</p>
+						</li>
+						<li class="pillar">
+							<span class="pillar-icon" aria-hidden="true">🛠</span>
+							<h3>Build Support</h3>
+							<p>
+								Expert compatibility checks and builder guides included free.
+							</p>
+						</li>
+						<li class="pillar">
+							<span class="pillar-icon" aria-hidden="true">↩️</span>
+							<h3>30-Day Returns</h3>
+							<p>Not satisfied? Send it back. No questions, no hassle.</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- FEATURED PRODUCTS -->
+			<section
+				class="featured section"
+				id="featured"
+				aria-labelledby="featured-heading"
+			>
+				<div class="container">
+					<h2 class="section-title" id="featured-heading">Featured Products</h2>
+					<p class="section-text">
+						Hand-picked components delivering the best performance per dollar
+						right now.
+					</p>
+
+					<div class="featured-grid">
+						<!-- HOT PRODUCTS -->
+						<div class="featured-column">
+							<h3 class="column-title">🔥 Hot Right Now</h3>
+							<ul class="product-list" role="list">
+								<li class="product-card">
+									<div class="product-card__top">
+										<span class="product-badge product-badge--hot"
+											>Bestseller</span
+										>
+										<span class="product-category">GPU</span>
+									</div>
+									<h4>RTX 4090</h4>
+									<p>Extreme 4K Gaming GPU — 24GB GDDR6X</p>
+									<div class="product-card__bottom">
+										<span class="price"
+											><span class="sr-only">Price: </span>$1,699</span
+										>
+										<a href="/products" class="product-link">View →</a>
+									</div>
+								</li>
+
+								<li class="product-card">
+									<div class="product-card__top">
+										<span class="product-badge product-badge--hot"
+											>Popular</span
+										>
+										<span class="product-category">CPU</span>
+									</div>
+									<h4>Ryzen 9 7950X</h4>
+									<p>16-Core / 32-Thread Performance CPU</p>
+									<div class="product-card__bottom">
+										<span class="price"
+											><span class="sr-only">Price: </span>$599</span
+										>
+										<a href="/products" class="product-link">View →</a>
+									</div>
+								</li>
+
+								<li class="product-card">
+									<div class="product-card__top">
+										<span class="product-badge">In Stock</span>
+										<span class="product-category">RAM</span>
+									</div>
+									<h4>DDR5 32GB Kit</h4>
+									<p>6000MHz High-Speed Dual Channel Memory</p>
+									<div class="product-card__bottom">
+										<span class="price"
+											><span class="sr-only">Price: </span>$189</span
+										>
+										<a href="/products" class="product-link">View →</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<!-- TOP RATED -->
+						<div class="featured-column">
+							<h3 class="column-title">⭐ Top Rated</h3>
+							<ul class="product-list" role="list">
+								<li class="product-card">
+									<div class="product-card__top">
+										<span class="product-badge product-badge--rated"
+											>4.9 ★</span
+										>
+										<span class="product-category">GPU</span>
+									</div>
+									<h4>RTX 4080 Super</h4>
+									<p>Elite 1440p / 4K Gaming GPU — 16GB GDDR6X</p>
+									<div class="product-card__bottom">
+										<span class="price"
+											><span class="sr-only">Price: </span>$999</span
+										>
+										<a href="/products" class="product-link">View →</a>
+									</div>
+								</li>
+
+								<li class="product-card">
+									<div class="product-card__top">
+										<span class="product-badge product-badge--rated"
+											>4.8 ★</span
+										>
+										<span class="product-category">CPU</span>
+									</div>
+									<h4>Intel i9-14900K</h4>
+									<p>Next-Gen Gaming & Workstation CPU</p>
+									<div class="product-card__bottom">
+										<span class="price"
+											><span class="sr-only">Price: </span>$589</span
+										>
+										<a href="/products" class="product-link">View →</a>
+									</div>
+								</li>
+
+								<li class="product-card">
+									<div class="product-card__top">
+										<span class="product-badge product-badge--rated"
+											>4.9 ★</span
+										>
+										<span class="product-category">Storage</span>
+									</div>
+									<h4>2TB NVMe Gen4 SSD</h4>
+									<p>7,400 MB/s Sequential Read Speed</p>
+									<div class="product-card__bottom">
+										<span class="price"
+											><span class="sr-only">Price: </span>$159</span
+										>
+										<a href="/products" class="product-link">View →</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="featured-footer">
+						<a href="/products" class="btn btn-secondary"
+							>View All Products →</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- ABOUT -->
+			<section class="about section" aria-labelledby="about-heading">
+				<div class="container">
+					<h2 class="section-title" id="about-heading">Built by Builders</h2>
+					<p class="section-text">
+						We are builders first. Our mission is simple: deliver
+						high-performance PC components without compromise. From flagship
+						GPUs to precision-tuned CPUs, every product is selected for power,
+						efficiency, and reliability.
+					</p>
+					<dl class="about-stats">
+						<div class="stat">
+							<dt class="stat-label">Components Sold</dt>
+							<dd class="stat-value">
+								25K<span class="stat-accent" aria-hidden="true">+</span>
+							</dd>
+						</div>
+						<div class="stat-divider" aria-hidden="true"></div>
+						<div class="stat">
+							<dt class="stat-label">Average Rating</dt>
+							<dd class="stat-value">
+								4.9<span class="stat-accent" aria-hidden="true">★</span>
+							</dd>
+						</div>
+						<div class="stat-divider" aria-hidden="true"></div>
+						<div class="stat">
+							<dt class="stat-label">Industry Experience</dt>
+							<dd class="stat-value">
+								7<span class="stat-accent" aria-hidden="true"> yrs</span>
+							</dd>
+						</div>
+						<div class="stat-divider" aria-hidden="true"></div>
+						<div class="stat">
+							<dt class="stat-label">On-Time Delivery</dt>
+							<dd class="stat-value">
+								99<span class="stat-accent" aria-hidden="true">%</span>
+							</dd>
+						</div>
+					</dl>
+				</div>
+			</section>
+		</main>
+
+		<%- include('../partials/footer') %>
 	</body>
 </html>

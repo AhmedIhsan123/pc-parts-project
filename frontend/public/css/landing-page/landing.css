@@ -2,17 +2,558 @@
    LAYOUT STRUCTURE
    ========================================= */
 
-html,
-body {
-	height: 100%;
+main {
+	flex: 1;
 }
 
-body {
+/* Grid + glows scoped to main */
+.landing {
+	position: relative;
+	overflow: hidden;
+}
+
+.landing::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(249, 115, 22, 0.045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(249, 115, 22, 0.045) 1px, transparent 1px);
+	background-size: 60px 60px;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Alternating glows placed on .landing, evenly spaced down the page */
+.landing-glow {
+	position: absolute;
+	width: 700px;
+	height: 700px;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle,
+		rgba(249, 115, 22, 0.15) 0%,
+		transparent 70%
+	);
+	filter: blur(80px);
+	pointer-events: none;
+	z-index: 0;
+	transform: translateY(-50%);
+}
+
+.landing-glow--1 {
+	top: 12%;
+	left: -220px;
+}
+.landing-glow--2 {
+	top: 35%;
+	right: -220px;
+}
+.landing-glow--3 {
+	top: 62%;
+	left: -220px;
+}
+.landing-glow--4 {
+	top: 88%;
+	right: -220px;
+}
+
+/* =========================================
+   SECTION BASE
+   ========================================= */
+
+.section {
+	padding: var(--spacing-xl) var(--spacing-lg);
+	position: relative;
+	z-index: 1;
+}
+
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.section-title {
+	font-size: 2.4rem;
+	margin-bottom: var(--spacing-md);
+	text-align: center;
+}
+
+.section-text {
+	max-width: 720px;
+	margin: 0 auto var(--spacing-xl);
+	text-align: center;
+	color: var(--text-secondary);
+	font-size: 1.05rem;
+	line-height: 1.7;
+}
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero {
+	position: relative;
+	text-align: center;
+	padding-top: calc(var(--spacing-xl) * 2);
+	padding-bottom: calc(var(--spacing-xl) * 2);
+}
+
+/* Background layers */
+.hero-bg {
+	display: none;
+}
+
+.hero-inner {
+	position: relative;
+	z-index: 1;
+}
+
+/* Badge */
+.hero-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	border: 1px solid rgba(249, 115, 22, 0.3);
+	background: rgba(249, 115, 22, 0.06);
+	color: var(--color-primary);
+	font-size: 0.8rem;
+	padding: 6px 14px;
+	border-radius: 999px;
+	margin-bottom: var(--spacing-lg);
+	letter-spacing: 0.02em;
+}
+
+.hero-badge__dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--color-primary);
+	animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+	0%,
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.4;
+		transform: scale(0.7);
+	}
+}
+
+.hero h1 {
+	font-size: 3.4rem;
+	line-height: 1.1;
+	margin-bottom: var(--spacing-md);
+}
+
+.accent {
+	color: var(--color-primary);
+}
+
+.hero-subtext {
+	color: var(--text-secondary);
+	font-size: 1.15rem;
+	margin-bottom: var(--spacing-lg);
+}
+
+.hero-actions {
+	display: flex;
+	justify-content: center;
+	gap: var(--spacing-md);
+	margin-bottom: var(--spacing-lg);
+}
+
+/* Trust bar */
+.hero-trust {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: var(--text-muted);
+	font-size: 0.82rem;
+	flex-wrap: wrap;
+}
+
+.hero-trust strong {
+	color: var(--text-secondary);
+}
+
+.hero-trust span:first-child {
+	color: var(--color-primary);
+	letter-spacing: 2px;
+}
+
+.hero-trust__sep {
+	color: var(--border-subtle);
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.btn {
+	display: inline-block;
+	padding: 14px 30px;
+	border-radius: var(--radius-md);
+	font-size: 0.95rem;
+	font-family: inherit;
+	text-decoration: none;
+	transition: var(--transition-smooth);
+	cursor: pointer;
+}
+
+.btn-primary {
+	background: var(--color-primary);
+	color: var(--text-primary);
+	box-shadow: var(--glow-primary);
+}
+
+.btn-primary:hover {
+	background: var(--color-primary-hover);
+	transform: translateY(-3px);
+}
+
+.btn-secondary {
+	border: 1px solid var(--border-subtle);
+	color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+	border-color: var(--color-primary);
+	color: var(--color-primary);
+	transform: translateY(-3px);
+}
+
+/* =========================================
+   ACCESSIBILITY UTILITY
+   ========================================= */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* =========================================
+   PILLARS (WHY SURGEFORGE)
+   ========================================= */
+
+.pillars {
+	padding-top: 0;
+	padding-bottom: var(--spacing-xl);
+}
+
+.pillars-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--spacing-md);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.pillar {
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	padding: var(--spacing-lg) var(--spacing-md);
+	text-align: center;
+	transition: var(--transition-smooth);
+}
+
+.pillar:hover {
+	border-color: rgba(249, 115, 22, 0.3);
+	background: var(--bg-surface-hover);
+	transform: translateY(-4px);
+}
+
+.pillar-icon {
+	display: block;
+	font-size: 1.8rem;
+	margin-bottom: var(--spacing-sm);
+	line-height: 1;
+}
+
+.pillar h3 {
+	font-size: 0.95rem;
+	margin-bottom: var(--spacing-xs);
+	color: var(--text-primary);
+}
+
+.pillar p {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+	line-height: 1.5;
+}
+
+/* =========================================
+   FEATURED PRODUCTS
+   ========================================= */
+
+.featured-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--spacing-xl);
+	margin-top: var(--spacing-xl);
+}
+
+.featured-column {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh; /* Full viewport height */
 }
 
-main {
-	flex: 1; /* Take up all remaining space */
+.column-title {
+	font-size: 1.1rem;
+	margin-bottom: var(--spacing-md);
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.product-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.product-card {
+	padding: var(--spacing-md) var(--spacing-lg);
+	border-radius: var(--radius-lg);
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	transition: var(--transition-smooth);
+	position: relative;
+	overflow: hidden;
+}
+
+/* Accent line on left edge */
+.product-card::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 3px;
+	background: var(--color-primary);
+	transform: scaleY(0);
+	transform-origin: bottom;
+	transition: transform var(--transition-smooth);
+	border-radius: 0 2px 2px 0;
+}
+
+.product-card:hover::before {
+	transform: scaleY(1);
+}
+
+.product-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(249, 115, 22, 0.25);
+	background: var(--bg-surface-hover);
+	box-shadow: var(--glow-primary);
+}
+
+/* Card top row: badge + category */
+.product-card__top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: var(--spacing-sm);
+}
+
+.product-badge {
+	font-size: 0.72rem;
+	font-weight: 600;
+	padding: 3px 8px;
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text-muted);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.product-badge--hot {
+	background: rgba(249, 115, 22, 0.12);
+	color: var(--color-primary);
+}
+
+.product-badge--rated {
+	background: rgba(234, 179, 8, 0.1);
+	color: #eab308;
+}
+
+.product-category {
+	font-size: 0.72rem;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.product-card h4 {
+	margin-bottom: 4px;
+	font-size: 1.05rem;
+}
+
+.product-card p {
+	color: var(--text-secondary);
+	font-size: 0.88rem;
+	margin-bottom: var(--spacing-md);
+}
+
+/* Card bottom row: price + link */
+.product-card__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.price {
+	font-weight: 700;
+	font-size: 1.05rem;
+	color: var(--color-primary);
+}
+
+.product-link {
+	font-size: 0.82rem;
+	color: var(--text-muted);
+	text-decoration: none;
+	transition: color var(--transition-fast);
+}
+
+.product-link:hover {
+	color: var(--color-primary);
+}
+
+/* CTA below featured grid */
+.featured-footer {
+	margin-top: var(--spacing-xl);
+	text-align: center;
+}
+
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
+
+.about {
+	position: relative;
+}
+
+.about .container {
+	position: relative;
+	z-index: 1;
+}
+
+.about-stats {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: var(--spacing-lg);
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.stat {
+	flex: 1;
+	min-width: 140px;
+	text-align: center;
+	padding: 0 var(--spacing-lg);
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.stat-value {
+	font-size: 2.6rem;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin: 0;
+	line-height: 1;
+}
+
+.stat-accent {
+	color: var(--color-primary);
+}
+
+.stat-label {
+	color: var(--text-muted);
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	margin: 0 0 6px;
+}
+
+.stat-divider {
+	width: 1px;
+	height: 60px;
+	background: var(--border-subtle);
+	flex-shrink: 0;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1000px) {
+	.pillars-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 900px) {
+	.featured-grid {
+		grid-template-columns: 1fr;
+		gap: var(--spacing-lg);
+	}
+
+	.stat-divider {
+		display: none;
+	}
+
+	.about-stats {
+		gap: var(--spacing-lg);
+	}
+}
+
+@media (max-width: 768px) {
+	.hero h1 {
+		font-size: 2.4rem;
+	}
+
+	.hero-actions {
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.pillars-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.hero-trust {
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.hero-trust__sep {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.pillars-grid {
+		grid-template-columns: 1fr;
+	}
 }

@@ -6,7 +6,6 @@
 	background-color: var(--bg-surface);
 	border-top: 1px solid var(--border-subtle);
 	padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
-	margin-top: var(--spacing-xl);
 }
 
 .footer-container {
