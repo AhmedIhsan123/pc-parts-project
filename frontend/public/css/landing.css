@@ -1,0 +1,18 @@
+/* =========================================
+   LAYOUT STRUCTURE
+   ========================================= */
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* Full viewport height */
+}
+
+main {
+	flex: 1; /* Take up all remaining space */
+}
