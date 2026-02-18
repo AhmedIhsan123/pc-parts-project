@@ -1,5 +1,5 @@
 {
-	"name": "SurgeForge",
+	"name": "surge-forge-frontend",
 	"version": "1.0.0",
 	"description": "SurgeForge is a modern eCommerce web application focused on PC components. The platform is designed to provide users with a streamlined experience for browsing, filtering, and purchasing computer hardware.",
 	"private": true,
@@ -16,8 +16,7 @@
 	"dependencies": {
 		"dotenv": "^17.2.3",
 		"ejs": "^3.1.10",
-		"express": "^5.2.1",
-		"node": "^25.6.1"
+		"express": "^5.2.1"
 	},
 	"devDependencies": {
 		"eslint": "^9.39.2",
