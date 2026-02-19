@@ -17,8 +17,8 @@ main {
 	position: absolute;
 	inset: 0;
 	background-image:
-		linear-gradient(rgba(249, 219, 22, 0.045) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(249, 230, 22, 0.045) 1px, transparent 1px);
+		linear-gradient(rgba(249, 219, 22, 0.09) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(249, 230, 22, 0.09) 1px, transparent 1px);
 	background-size: 60px 60px;
 	pointer-events: none;
 	z-index: 0;
