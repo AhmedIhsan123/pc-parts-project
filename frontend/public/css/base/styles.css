@@ -6,9 +6,9 @@
 
 :root {
 	/* Brand Colors */
-	--color-primary: #f01212;
-	--color-primary-hover: #fb5f3c;
-	--color-accent-deep: #d91f06;
+	--color-primary: #f0dd12;
+	--color-primary-hover: #fbe83c;
+	--color-accent-deep: #d9d506;
 	/* Backgrounds */
 	--bg-main: #0a0a0c;
 	--bg-surface: #121216;
@@ -23,7 +23,7 @@
 	--border-subtle: rgba(255, 255, 255, 0.06);
 
 	/* Glow */
-	--glow-primary: 0 0 25px rgba(249, 41, 22, 0.2);
+	--glow-primary: 0 0 25px rgba(249, 234, 22, 0.2);
 
 	/* Spacing */
 	--spacing-xs: 4px;
@@ -99,7 +99,7 @@ body {
 
 .product-card:hover {
 	transform: translateY(-4px);
-	border-color: rgba(249, 60, 22, 0.25);
+	border-color: rgba(249, 238, 22, 0.25);
 	background: var(--bg-surface-hover);
 	box-shadow: var(--glow-primary);
 }
@@ -124,13 +124,13 @@ body {
 }
 
 .product-badge--hot {
-	background: rgba(249, 75, 22, 0.12);
+	background: rgba(249, 230, 22, 0.12);
 	color: var(--color-primary);
 }
 
 .product-badge--rated {
-	background: rgba(234, 15, 8, 0.1);
-	color: #ea2208;
+	background: rgba(234, 200, 8, 0.1);
+	color: #ead708;
 }
 
 .product-category {
