@@ -39,6 +39,7 @@
 .nav-search {
 	display: flex;
 	justify-content: center;
+	padding: 0 10px;
 }
 
 .search-wrapper {
@@ -48,7 +49,7 @@
 	margin: 0 auto;
 }
 
-/* we can chnage it later */
+/* we can change it later */
 .search-icon {
 	position: absolute;
 	left: 16px;
@@ -109,6 +110,11 @@ a[href="/checkout"] {
 	color: var(--color-primary);
 }
 
+.hamburger { /* hidden on desktop layout as default */
+    display: none;
+    cursor: pointer;
+}
+
 /* ---------- Account Circle ---------- */
 
 .account-circle {
@@ -146,4 +152,47 @@ a[href="/checkout"] {
 	);
 
 	opacity: 0.95;
+}
+
+/* Mobile layout for hamburger menu */
+@media (max-width: 768px) {
+	.navbar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.nav-search {
+    	display: flex;
+    	flex: 1;
+    	margin: 0 10px;
+	}
+	
+    .nav-links {
+        display: none;
+		width: 100%;
+		flex-direction: column;
+        background-color: #6d5c10;
+		position: absolute;
+		top: 100%;
+		left : 0;
+		z-index: 1000;
+    }
+	
+    .nav-links li a {
+        padding: 15px;
+        text-align: center;
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+		order: 2;
+	}
+
+    .nav-links.open {
+        display: flex;
+		padding: 10px 0px;
+    }
 }

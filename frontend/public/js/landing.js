@@ -143,3 +143,12 @@ if (statsSection && counters.length > 0) {
         });
     }
 }
+
+// Get the elements
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+// Add event listener
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+});
