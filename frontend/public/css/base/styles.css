@@ -47,13 +47,13 @@
    ========================================= */
 
 * {
+	cursor: url("/images/cursor.png"), auto;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
 html {
-	cursor: url("https://pngimg.com/d/cursor_PNG45.png"), auto;
 	font-size: 16px;
 }
 
