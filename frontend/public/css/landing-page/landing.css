@@ -292,6 +292,22 @@ main {
 	margin: 0;
 }
 
+/* Image overlay for products in landing page */
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-bg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
 /* =========================================
    ABOUT SECTION
    ========================================= */
