@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="/css/base/nav.css" />
 		<link rel="stylesheet" href="/css/base/footer.css" />
 
+		<!-- Landing page script -->
+		<script src="/js/landing.js" defer></script>
+
 		<!-- Fonts -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
@@ -30,12 +33,15 @@
 				<div class="container hero-inner">
 					<p class="hero-badge">
 						<span class="hero-badge__dot" aria-hidden="true"></span>
-						New Arrivals — RTX 50 Series In Stock
+						<span id="badge-text">New Arrivals — RTX 50 Series In Stock</span>
 					</p>
-					<h1 id="hero-heading">
-						Build Without Limits.<br />
-						<span class="accent">Forge Performance.</span>
+					<h1 id="hero-heading" class="hero-title">
+						<span id="typed-text"></span><span class="cursor"></span>
 					</h1>
+
+					<h2 class="hero-subtitle accent" id="hero-subtitle">
+						Forge Performance.
+					</h2>
 					<p class="hero-subtext">
 						Premium GPUs, CPUs, and performance components engineered for
 						gamers, creators, and serious builders.
@@ -237,28 +243,32 @@
 						<div class="stat">
 							<dt class="stat-label">Components Sold</dt>
 							<dd class="stat-value">
-								25K<span class="stat-accent" aria-hidden="true">+</span>
+								<span class="counter" data-target="25000">0</span>
+								<span class="stat-accent">+</span>
 							</dd>
 						</div>
 						<div class="stat-divider" aria-hidden="true"></div>
 						<div class="stat">
 							<dt class="stat-label">Average Rating</dt>
 							<dd class="stat-value">
-								4.9<span class="stat-accent" aria-hidden="true">★</span>
+								<span class="counter" data-target="4.9">0</span>
+								<span class="stat-accent">★</span>
 							</dd>
 						</div>
 						<div class="stat-divider" aria-hidden="true"></div>
 						<div class="stat">
 							<dt class="stat-label">Industry Experience</dt>
 							<dd class="stat-value">
-								7<span class="stat-accent" aria-hidden="true"> yrs</span>
+								<span class="counter" data-target="7">0</span>
+								<span class="stat-accent"> yrs</span>
 							</dd>
 						</div>
 						<div class="stat-divider" aria-hidden="true"></div>
 						<div class="stat">
 							<dt class="stat-label">On-Time Delivery</dt>
 							<dd class="stat-value">
-								99<span class="stat-accent" aria-hidden="true">%</span>
+								<span class="counter" data-target="99">0</span>
+								<span class="stat-accent">%</span>
 							</dd>
 						</div>
 					</dl>
