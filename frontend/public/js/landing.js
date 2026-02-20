@@ -6,12 +6,11 @@ const textContainer = document.getElementById("typed-text");
 const cursor = document.querySelector(".cursor");
 
 if (textContainer) {
-
 	const firstPhrase = "Build With Precision";
 	const buildOnly = "Build";
 	const finalPhrase = " Without Limits.";
 
-	const typingSpeed = 170;
+	const typingSpeed = 50;
 	const eraseSpeed = 90;
 	const pauseAfterFirst = 2000;
 	const pauseAfterBuild = 800;
@@ -65,12 +64,11 @@ if (textContainer) {
 const badge = document.getElementById("badge-text");
 
 if (badge) {
-
 	const messages = [
 		"New Arrivals — RTX 50 Series In Stock",
 		"Now Shipping — Ryzen 8000 Series",
 		"Top Rated — 4.9★ Builder Approved",
-		"Free Shipping Over $99"
+		"Free Shipping Over $99",
 	];
 
 	let current = 0;
@@ -83,10 +81,8 @@ if (badge) {
 			badge.textContent = messages[current];
 			badge.classList.remove("badge-hidden");
 		}, 500);
-
 	}, 4000);
 }
-
 
 /* =========================================
    STATS COUNTER ANIMATION
@@ -95,60 +91,61 @@ const statsSection = document.querySelector(".about-stats");
 const counters = document.querySelectorAll(".counter");
 
 if (statsSection && counters.length > 0) {
-
 	let hasAnimated = false;
 
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting && !hasAnimated) {
-				statsSection.classList.add("reveal");
-				animateCounters();
-				hasAnimated = true;
-			}
-		});
-	}, { threshold: 0.4 });
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting && !hasAnimated) {
+					statsSection.classList.add("reveal");
+					animateCounters();
+					hasAnimated = true;
+				}
+			});
+		},
+		{ threshold: 0.4 },
+	);
 
 	observer.observe(statsSection);
 
 	function animateCounters() {
-	counters.forEach(counter => {
-		const target = parseFloat(counter.dataset.target);
-		let start = 0;
+		counters.forEach((counter) => {
+			const target = parseFloat(counter.dataset.target);
+			let start = 0;
 
-		const duration = 3000; // change it here to make it faster or slower
-		const startTime = performance.now();
+			const duration = 1000; // change it here to make it faster or slower
+			const startTime = performance.now();
 
-		function update(currentTime) {
-			const elapsed = currentTime - startTime;
-			const progress = Math.min(elapsed / duration, 1);
+			function update(currentTime) {
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
 
-			let value = target * progress;
+				let value = target * progress;
 
-			if (target % 1 !== 0) {
-				counter.textContent = value.toFixed(1);
-			} else {
-				counter.textContent = Math.floor(value).toLocaleString();
+				if (target % 1 !== 0) {
+					counter.textContent = value.toFixed(1);
+				} else {
+					counter.textContent = Math.floor(value).toLocaleString();
+				}
+
+				if (progress < 1) {
+					requestAnimationFrame(update);
+				} else {
+					counter.textContent =
+						target % 1 !== 0 ? target.toFixed(1) : target.toLocaleString();
+				}
 			}
 
-			if (progress < 1) {
-				requestAnimationFrame(update);
-			} else {
-				counter.textContent = target % 1 !== 0
-					? target.toFixed(1)
-					: target.toLocaleString();
-			}
-		}
-
-            requestAnimationFrame(update);
-        });
-    }
+			requestAnimationFrame(update);
+		});
+	}
 }
 
 // Get the elements
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
 
 // Add event listener
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+hamburger.addEventListener("click", () => {
+	navLinks.classList.toggle("open");
 });

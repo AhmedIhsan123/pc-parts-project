@@ -47,7 +47,7 @@
    ========================================= */
 
 * {
-	cursor: url("/images/cursor.png"), auto;
+	cursor: none;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -193,7 +193,6 @@ body {
 	font-family: inherit;
 	text-decoration: none;
 	transition: var(--transition-smooth);
-	cursor: pointer;
 }
 
 .btn-primary {

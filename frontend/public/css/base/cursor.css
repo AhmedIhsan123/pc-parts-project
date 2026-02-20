@@ -1,0 +1,32 @@
+/* ===============================
+   Custom Cursor — SurgeForge
+   =============================== */
+
+.custom-cursor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 18px; /* default size */
+	height: 18px;
+	border: 2px solid var(--color-accent-deep); /* main accent */
+	border-radius: 50%;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	transition:
+		width var(--transition-smooth),
+		height var(--transition-smooth),
+		background-color var(--transition-smooth),
+		border-color var(--transition-smooth),
+		transform 0.05s ease-out;
+	z-index: 9999;
+	mix-blend-mode: difference; /* subtle glow on dark bg */
+	background-color: transparent;
+}
+
+.custom-cursor.active {
+	width: 40px; /* hover size */
+	height: 40px;
+	background-color: rgba(240, 221, 18, 0.2); /* gold semi-transparent glow */
+	border-color: var(--color-primary); /* bright accent on hover */
+	box-shadow: 0 0 15px rgba(240, 221, 18, 0.3);
+}
