@@ -24,7 +24,7 @@ This project is intended to serve as an example of a well structured, dynamic we
 
 ---
 
-## Tech Stack (Example)
+## Tech Stack
 
 - **Frontend:** HTML / CSS / JavaScript
 - **Backend:** Node.js / Express
