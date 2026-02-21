@@ -38,7 +38,7 @@
 .nav-search {
 	display: flex;
 	justify-content: center;
-	padding: 0 10px;
+	padding: 0 var(--spacing-sm);
 }
 
 .search-wrapper {
@@ -48,10 +48,9 @@
 	margin: 0 auto;
 }
 
-/* we can change it later */
 .search-icon {
 	position: absolute;
-	left: 16px;
+	left: var(--spacing-md);
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: 0.9rem;
@@ -61,7 +60,7 @@
 
 .nav-search-input {
 	width: 100%;
-	padding: 12px 20px 12px 42px;
+	padding: 12px var(--spacing-lg) 12px 42px;
 
 	border-radius: 999px;
 	background-color: var(--bg-surface-hover);
@@ -81,7 +80,7 @@
 
 .nav-search-input:focus {
 	border-color: var(--color-primary);
-	box-shadow: none;
+	box-shadow: var(--glow-primary);
 }
 
 /* ---------- Navigation Links ---------- */
@@ -103,17 +102,68 @@
 a[href="/checkout"] {
 	display: flex;
 	align-items: center;
-	border-left: 1px solid #b3b3b8;
-	padding-left: 20px;
+	border-left: 1px solid var(--border-subtle);
+	padding-left: var(--spacing-md);
 }
 
 .nav-links a:hover {
 	color: var(--color-primary);
 }
 
+/* ---------- Hamburger ---------- */
+
+/* ---------- Hamburger ---------- */
+
 .hamburger {
-	/* hidden on desktop layout as default */
 	display: none;
+	position: relative;
+
+	width: 40px;
+	height: 40px;
+
+	background-color: var(--bg-surface-hover);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-sm);
+
+	cursor: pointer;
+	padding: 0;
+
+	transition: var(--transition-fast);
+}
+
+/* Base line style */
+.hamburger span {
+	position: absolute;
+	left: 50%;
+	width: 20px;
+	height: 2px;
+	background-color: var(--text-primary);
+	transform: translateX(-50%);
+	transition: var(--transition-fast);
+}
+
+/* Top line */
+.hamburger span:nth-child(1) {
+	top: 13px;
+}
+
+/* Middle line */
+.hamburger span:nth-child(2) {
+	top: 19px;
+}
+
+/* Bottom line */
+.hamburger span:nth-child(3) {
+	top: 25px;
+}
+
+.hamburger:hover {
+	border-color: var(--color-primary);
+	box-shadow: var(--glow-primary);
+}
+
+.hamburger:hover span {
+	background-color: var(--color-primary);
 }
 
 /* ---------- Account Circle ---------- */
@@ -126,7 +176,7 @@ a[href="/checkout"] {
 	background-color: var(--bg-surface-hover);
 	border: 1px solid var(--border-subtle);
 
-	transition: all var(--transition-smooth);
+	transition: var(--transition-smooth);
 }
 
 .account-circle:hover {
@@ -134,7 +184,7 @@ a[href="/checkout"] {
 	box-shadow: var(--glow-primary);
 }
 
-/* ---------- Bright Premium Underline  ---------- */
+/* ---------- Premium Underline ---------- */
 
 .navbar::after {
 	content: "";
@@ -147,14 +197,17 @@ a[href="/checkout"] {
 	background: linear-gradient(
 		90deg,
 		transparent 0%,
-		rgba(240, 221, 18, 0.95) 50%,
+		var(--color-primary) 50%,
 		transparent 100%
 	);
 
-	opacity: 0.95;
+	opacity: 0.9;
 }
 
-/* Mobile layout for hamburger menu */
+/* =========================================
+   MOBILE
+   ========================================= */
+
 @media (max-width: 768px) {
 	.navbar {
 		display: flex;
@@ -164,26 +217,30 @@ a[href="/checkout"] {
 	}
 
 	.nav-search {
-		display: flex;
 		flex: 1;
-		margin: 0 10px;
+		margin: 0 var(--spacing-sm);
 	}
 
 	.nav-links {
 		display: none;
 		width: 100%;
 		flex-direction: column;
-		background-color: #6d5c10;
+		background-color: var(--bg-surface);
+		border-top: 1px solid var(--border-subtle);
 		position: absolute;
 		top: 100%;
 		left: 0;
 		z-index: 1000;
 	}
 
-	.nav-links li a {
-		padding: 15px;
+	.nav-links a {
+		padding: var(--spacing-md);
 		text-align: center;
 		display: block;
+	}
+
+	a[href="/checkout"] {
+		border-left: 0;
 	}
 
 	.hamburger {
@@ -193,6 +250,6 @@ a[href="/checkout"] {
 
 	.nav-links.open {
 		display: flex;
-		padding: 10px 0px;
+		padding: var(--spacing-sm) 0;
 	}
 }
