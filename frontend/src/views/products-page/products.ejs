@@ -3,10 +3,27 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>SurgeForge - PC Parts Marketplace</title>
+		<link rel="icon" href="/images/SF_Logo.png" />
+
+		<!-- Base styles -->
+		<link rel="stylesheet" href="/css/base/styles.css" />
+		<link rel="stylesheet" href="/css/base/nav.css" />
+		<link rel="stylesheet" href="/css/base/footer.css" />
+		<link rel="stylesheet" href="/css/base/cursor.css" />
+
+		<!-- Page-specific styles -->
 		<link rel="stylesheet" href="/css/products-page/products.css" />
+
+		<!-- Scripts -->
+		<script src="/js/cursor.js" defer></script>
+		<script src="/js/products.js" defer></script>
 	</head>
+
 	<body>
+		<!-- custom cursor -->
+		<div class="custom-cursor"></div>
+
 		<header><%- include('../partials/navigation') %></header>
 
 		<main class="landing">
@@ -15,26 +32,31 @@
 			<div class="landing-glow landing-glow--2" aria-hidden="true"></div>
 			<div class="landing-glow landing-glow--3" aria-hidden="true"></div>
 
-			<!-- ========== PAGE HEADER ========== -->
-			<header class="products-header section">
+			<!-- PAGE HEADER -->
+			<section
+				class="products-header section"
+				aria-labelledby="products-heading"
+			>
 				<div class="container">
-					<p class="hero-badge" style="margin: 0 auto var(--spacing-md)">
+					<p class="hero-badge">
 						<span class="hero-badge__dot" aria-hidden="true"></span>
 						<span id="badge-text">New drops every week</span>
 					</p>
-					<h1 class="section-title">
+
+					<h1 id="products-heading" class="section-title">
 						PC <span class="accent">Parts</span> Marketplace
 					</h1>
+
 					<p class="section-text">
 						Browse curated, battle-tested components. Filter by category,
 						budget, or spec — and build your rig exactly how you want it.
 					</p>
 				</div>
-			</header>
+			</section>
 
-			<!-- ========== PRODUCTS LAYOUT ========== -->
+			<!-- PRODUCTS LAYOUT -->
 			<div class="products-layout">
-				<!-- ===== FILTER SIDEBAR ===== -->
+				<!-- FILTER SIDEBAR -->
 				<aside
 					class="filter-sidebar"
 					id="filterSidebar"
@@ -47,7 +69,7 @@
 						</button>
 					</div>
 
-					<!-- Category -->
+					<!-- Category Filter -->
 					<div class="filter-group">
 						<span class="filter-group__label">Category</span>
 						<ul class="filter-pills" id="categoryPills">
@@ -97,7 +119,7 @@
 						</ul>
 					</div>
 
-					<!-- Price Range -->
+					<!-- Price Filter -->
 					<div class="filter-group">
 						<span class="filter-group__label">Max Price</span>
 						<div class="price-range-wrap">
@@ -117,7 +139,7 @@
 						</div>
 					</div>
 
-					<!-- Brand -->
+					<!-- Brand Filter -->
 					<div class="filter-group">
 						<span class="filter-group__label">Brand</span>
 						<ul class="filter-pills" id="brandPills">
@@ -188,9 +210,8 @@
 					</div>
 				</aside>
 
-				<!-- ===== PRODUCTS MAIN ===== -->
+				<!-- PRODUCTS MAIN -->
 				<section class="products-main" aria-label="Product listings">
-					<!-- Toolbar -->
 					<div class="products-toolbar">
 						<div
 							style="
@@ -220,8 +241,8 @@
 								>Showing <strong id="resultCount">0</strong> results</span
 							>
 						</div>
+
 						<div class="toolbar-right">
-							<!-- Search -->
 							<div class="products-search">
 								<svg
 									class="products-search__icon"
@@ -241,14 +262,13 @@
 									autocomplete="off"
 								/>
 							</div>
-							<!-- View toggle -->
+
 							<div class="view-toggle" role="group" aria-label="View mode">
 								<button
 									class="view-btn active"
 									id="gridViewBtn"
 									type="button"
 									aria-label="Grid view"
-									title="Grid view"
 								>
 									<svg viewBox="0 0 16 16" fill="currentColor">
 										<rect x="1" y="1" width="6" height="6" rx="1" />
@@ -262,7 +282,6 @@
 									id="listViewBtn"
 									type="button"
 									aria-label="List view"
-									title="List view"
 								>
 									<svg viewBox="0 0 16 16" fill="currentColor">
 										<rect x="1" y="2" width="14" height="3" rx="1" />
@@ -274,18 +293,15 @@
 						</div>
 					</div>
 
-					<!-- Active filter chips -->
+					<!-- Active filters -->
 					<div
 						class="active-filters"
 						id="activeFilters"
-						aria-label="Active filters"
 						aria-live="polite"
 					></div>
 
 					<!-- Products grid -->
-					<div class="products-grid" id="productsGrid" aria-live="polite">
-						<!-- Cards injected by JS -->
-					</div>
+					<div class="products-grid" id="productsGrid" aria-live="polite"></div>
 
 					<!-- Pagination -->
 					<nav
@@ -296,11 +312,10 @@
 				</section>
 			</div>
 
-			<!-- ========== MOBILE FILTER OVERLAY ========== -->
+			<!-- Mobile filter overlay -->
 			<div class="filter-overlay" id="filterOverlay" aria-hidden="true"></div>
 			<div class="filter-drawer" id="filterDrawer" aria-hidden="true">
 				<div class="filter-drawer-handle" aria-hidden="true"></div>
-				<!-- Cloned filter content injected by JS -->
 			</div>
 		</main>
 
