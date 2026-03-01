@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="/css/products-page/products.css" />
+	</head>
+	<body>
+		<header><%- include('../partials/navigation') %></header>
+
+		<main class="landing">
+			<!-- Background glow orbs -->
+			<div class="landing-glow landing-glow--1" aria-hidden="true"></div>
+			<div class="landing-glow landing-glow--2" aria-hidden="true"></div>
+			<div class="landing-glow landing-glow--3" aria-hidden="true"></div>
+
+			<!-- ========== PAGE HEADER ========== -->
+			<header class="products-header section">
+				<div class="container">
+					<p class="hero-badge" style="margin: 0 auto var(--spacing-md)">
+						<span class="hero-badge__dot" aria-hidden="true"></span>
+						<span id="badge-text">New drops every week</span>
+					</p>
+					<h1 class="section-title">
+						PC <span class="accent">Parts</span> Marketplace
+					</h1>
+					<p class="section-text">
+						Browse curated, battle-tested components. Filter by category,
+						budget, or spec — and build your rig exactly how you want it.
+					</p>
+				</div>
+			</header>
+
+			<!-- ========== PRODUCTS LAYOUT ========== -->
+			<div class="products-layout">
+				<!-- ===== FILTER SIDEBAR ===== -->
+				<aside
+					class="filter-sidebar"
+					id="filterSidebar"
+					aria-label="Product filters"
+				>
+					<div class="filter-sidebar__header">
+						<span class="filter-sidebar__title">Filters</span>
+						<button class="filter-clear-btn" id="clearAllBtn" type="button">
+							Clear all
+						</button>
+					</div>
+
+					<!-- Category -->
+					<div class="filter-group">
+						<span class="filter-group__label">Category</span>
+						<ul class="filter-pills" id="categoryPills">
+							<li
+								class="filter-pill active"
+								data-filter="category"
+								data-value="all"
+							>
+								All
+							</li>
+							<li class="filter-pill" data-filter="category" data-value="cpu">
+								CPU
+							</li>
+							<li class="filter-pill" data-filter="category" data-value="gpu">
+								GPU
+							</li>
+							<li class="filter-pill" data-filter="category" data-value="ram">
+								RAM
+							</li>
+							<li
+								class="filter-pill"
+								data-filter="category"
+								data-value="storage"
+							>
+								Storage
+							</li>
+							<li
+								class="filter-pill"
+								data-filter="category"
+								data-value="motherboard"
+							>
+								Motherboard
+							</li>
+							<li class="filter-pill" data-filter="category" data-value="psu">
+								PSU
+							</li>
+							<li
+								class="filter-pill"
+								data-filter="category"
+								data-value="cooling"
+							>
+								Cooling
+							</li>
+							<li class="filter-pill" data-filter="category" data-value="case">
+								Case
+							</li>
+						</ul>
+					</div>
+
+					<!-- Price Range -->
+					<div class="filter-group">
+						<span class="filter-group__label">Max Price</span>
+						<div class="price-range-wrap">
+							<input
+								type="range"
+								id="priceRange"
+								min="0"
+								max="2000"
+								value="2000"
+								step="50"
+								aria-label="Maximum price"
+							/>
+							<div class="price-range-labels">
+								<span>$0</span>
+								<span id="priceRangeDisplay">$2000</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Brand -->
+					<div class="filter-group">
+						<span class="filter-group__label">Brand</span>
+						<ul class="filter-pills" id="brandPills">
+							<li
+								class="filter-pill active"
+								data-filter="brand"
+								data-value="all"
+							>
+								All
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="amd">
+								AMD
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="intel">
+								Intel
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="nvidia">
+								NVIDIA
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="corsair">
+								Corsair
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="samsung">
+								Samsung
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="nzxt">
+								NZXT
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="asus">
+								ASUS
+							</li>
+							<li class="filter-pill" data-filter="brand" data-value="msi">
+								MSI
+							</li>
+						</ul>
+					</div>
+
+					<!-- Sort -->
+					<div class="filter-group">
+						<span class="filter-group__label">Sort By</span>
+						<select
+							class="filter-select"
+							id="sortSelect"
+							aria-label="Sort products"
+						>
+							<option value="featured">Featured</option>
+							<option value="price-asc">Price: Low to High</option>
+							<option value="price-desc">Price: High to Low</option>
+							<option value="name-asc">Name: A–Z</option>
+							<option value="name-desc">Name: Z–A</option>
+							<option value="newest">Newest First</option>
+						</select>
+					</div>
+
+					<!-- Availability -->
+					<div class="filter-group">
+						<span class="filter-group__label">Availability</span>
+						<label class="filter-toggle">
+							<input type="checkbox" id="inStockToggle" />
+							<div class="toggle-track"><div class="toggle-thumb"></div></div>
+							<span class="filter-toggle__label">In stock only</span>
+						</label>
+						<label class="filter-toggle" style="margin-top: 8px">
+							<input type="checkbox" id="saleToggle" />
+							<div class="toggle-track"><div class="toggle-thumb"></div></div>
+							<span class="filter-toggle__label">On sale</span>
+						</label>
+					</div>
+				</aside>
+
+				<!-- ===== PRODUCTS MAIN ===== -->
+				<section class="products-main" aria-label="Product listings">
+					<!-- Toolbar -->
+					<div class="products-toolbar">
+						<div
+							style="
+								display: flex;
+								align-items: center;
+								gap: var(--spacing-sm);
+								flex-wrap: wrap;
+							"
+						>
+							<button
+								class="mobile-filter-btn"
+								id="mobileFilterBtn"
+								type="button"
+								aria-label="Open filters"
+							>
+								<svg
+									viewBox="0 0 16 16"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+								>
+									<path d="M2 4h12M4 8h8M6 12h4" />
+								</svg>
+								Filters
+							</button>
+							<span class="products-count"
+								>Showing <strong id="resultCount">0</strong> results</span
+							>
+						</div>
+						<div class="toolbar-right">
+							<!-- Search -->
+							<div class="products-search">
+								<svg
+									class="products-search__icon"
+									viewBox="0 0 16 16"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+								>
+									<circle cx="6.5" cy="6.5" r="4" />
+									<path d="M11 11l3 3" />
+								</svg>
+								<input
+									type="search"
+									id="searchInput"
+									placeholder="Search parts..."
+									aria-label="Search products"
+									autocomplete="off"
+								/>
+							</div>
+							<!-- View toggle -->
+							<div class="view-toggle" role="group" aria-label="View mode">
+								<button
+									class="view-btn active"
+									id="gridViewBtn"
+									type="button"
+									aria-label="Grid view"
+									title="Grid view"
+								>
+									<svg viewBox="0 0 16 16" fill="currentColor">
+										<rect x="1" y="1" width="6" height="6" rx="1" />
+										<rect x="9" y="1" width="6" height="6" rx="1" />
+										<rect x="1" y="9" width="6" height="6" rx="1" />
+										<rect x="9" y="9" width="6" height="6" rx="1" />
+									</svg>
+								</button>
+								<button
+									class="view-btn"
+									id="listViewBtn"
+									type="button"
+									aria-label="List view"
+									title="List view"
+								>
+									<svg viewBox="0 0 16 16" fill="currentColor">
+										<rect x="1" y="2" width="14" height="3" rx="1" />
+										<rect x="1" y="7" width="14" height="3" rx="1" />
+										<rect x="1" y="12" width="14" height="3" rx="1" />
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Active filter chips -->
+					<div
+						class="active-filters"
+						id="activeFilters"
+						aria-label="Active filters"
+						aria-live="polite"
+					></div>
+
+					<!-- Products grid -->
+					<div class="products-grid" id="productsGrid" aria-live="polite">
+						<!-- Cards injected by JS -->
+					</div>
+
+					<!-- Pagination -->
+					<nav
+						class="pagination"
+						id="pagination"
+						aria-label="Product pages"
+					></nav>
+				</section>
+			</div>
+
+			<!-- ========== MOBILE FILTER OVERLAY ========== -->
+			<div class="filter-overlay" id="filterOverlay" aria-hidden="true"></div>
+			<div class="filter-drawer" id="filterDrawer" aria-hidden="true">
+				<div class="filter-drawer-handle" aria-hidden="true"></div>
+				<!-- Cloned filter content injected by JS -->
+			</div>
+		</main>
+
+		<%- include('../partials/footer') %>
+	</body>
+</html>
