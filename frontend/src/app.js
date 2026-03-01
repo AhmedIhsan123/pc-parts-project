@@ -1,20 +1,21 @@
 import express from "express";
 
-//configure Express.js app
 const app = express();
 
-//view engine
 app.set("views", "src/views");
+app.set("view engine", "ejs");
 
-//static directories
 app.use(express.static("public"));
-
-//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//routers
-app.use("/", (req, res) => {
+// Specific routes first
+app.get("/products", (req, res) => {
+	res.render("products-page/products");
+});
+
+// Catch-all LAST
+app.get("/", (req, res) => {
 	res.render("landing-page/landing.ejs");
 });
 
