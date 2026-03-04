@@ -1,11 +1,21 @@
-DROP TABLE IF EXISTS pc_parts;
+DROP TABLE IF EXISTS products;
 
-CREATE TABLE pc_parts (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    product_name VARCHAR(255) NOT NULL,
-    brand VARCHAR(100) NOT NULL,
-    type VARCHAR(100) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL CHECK (price >= 0),
-    description TEXT,
-    image_url VARCHAR(500),
+CREATE TABLE products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+
+  name VARCHAR(150) NOT NULL,
+  brand VARCHAR(80) NOT NULL,
+  category VARCHAR(60) NOT NULL,
+
+  short_desc VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+
+  price DECIMAL(10,2) NOT NULL,
+  rating DECIMAL(2,1) DEFAULT 0.0,
+  stock_qty INT NOT NULL DEFAULT 0,
+
+  image_urls JSON NOT NULL,
+  specs JSON NULL,
+
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
