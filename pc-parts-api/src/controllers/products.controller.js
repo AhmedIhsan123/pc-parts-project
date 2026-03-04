@@ -1,28 +1,20 @@
-import * as service from "../services/products.service.js";
+import * as productsService from "../services/products.service.js";
 
-export async function productsPage(req, res) {
-  const products = await service.listProducts();
-  res.render("products/index", { products });
-}
+export const getAllProducts = async (req, res) => {
+	try {
+		const products = await productsService.getAllProducts();
+		res.json(products);
+	} catch (err) {
+		res.status(500).json({ error: err.message });
+	}
+};
 
-export async function productDetailPage(req, res) {
-  const id = Number(req.params.id);
-  const product = await service.findProduct(id);
-
-  if (!product) return res.status(404).send("Not found");
-
-  res.render("products/detail", { product });
-}
-
-export async function apiGetProducts(req, res) {
-  const { category, minPrice, maxPrice, q } = req.query;
-
-  const products = await service.searchProducts({
-    category,
-    minPrice,
-    maxPrice,
-    q,
-  });
-
-  res.json({ products });
-}
+export const getProductById = async (req, res) => {
+	try {
+		const product = await productsService.getProductById(req.params.id);
+		if (!product) return res.status(404).json({ error: "Product not found" });
+		res.json(product);
+	} catch (err) {
+		res.status(500).json({ error: err.message });
+	}
+};
