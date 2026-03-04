@@ -1,13 +1,11 @@
-import * as repo from "../model/products.repo.js";
+import { pool } from "../model/db.connect.js";
 
-export function listProducts() {
-  return repo.getAllProducts();
+export async function getAllProducts() {
+	const [rows] = await pool.query("SELECT * FROM products");
+	return rows;
 }
 
-export function findProduct(id) {
-  return repo.getProductById(id);
-}
-
-export function searchProducts(filters) {
-  return repo.filterProducts(filters);
+export async function getProductById(id) {
+	const [rows] = await pool.query("SELECT * FROM products WHERE id = ?", [id]);
+	return rows[0] ?? null;
 }
