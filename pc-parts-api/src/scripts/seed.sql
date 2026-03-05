@@ -1,4 +1,14 @@
 USE pcparts;
+-- Insert Categories
+INSERT INTO categories (category) VALUES
+('CPU'),
+('GPU'),
+('Motherboard'),
+('Power Supply'),
+('Case'),
+('Ram'),
+('Storage');
+
 -- =========================
 -- CPU
 -- =========================
