@@ -1,15 +1,4 @@
 USE pcparts;
-
--- Insert Categories
-INSERT INTO categories (category) VALUES
-('CPU'),
-('GPU'),
-('Motherboard'),
-('Power Supply'),
-('Case'),
-('Ram'),
-('Storage');
-
 -- =========================
 -- CPU
 -- =========================
@@ -23,7 +12,7 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('CPU','Intel Core i9-13900KS','Intel','Special edition 6GHz CPU for extreme performance','{"cores":24,"threads":32,"base_clock":"3.0 GHz","boost_clock":"6.0 GHz","socket":"LGA1700","tdp":"150W"}',699.99,10,TRUE,'/images/cpu/i9-13900ks.png', 4.7),
 ('CPU','AMD Ryzen 7 7700X','AMD','8-core Zen 4 processor for gaming and content creation','{"cores":8,"threads":16,"base_clock":"4.5 GHz","boost_clock":"5.4 GHz","socket":"AM5","tdp":"105W"}',349.99,28,TRUE,'/images/cpu/7700x.png', 4.5),
 ('CPU','Intel Core i5-13600K','Intel','Excellent value CPU with hybrid architecture','{"cores":14,"threads":20,"base_clock":"3.5 GHz","boost_clock":"5.1 GHz","socket":"LGA1700","tdp":"125W"}',299.99,45,TRUE,'/images/cpu/i5-13600k.png', 4.8),
-('CPU','AMD Ryzen 5 7600X','AMD','6-core efficient gaming CPU','{"cores":6,"threads":12,"base_clock":"4.7 GHz","boost_clock":"5.3 GHz","socket":"AM5","tdp":"105W"}',249.99,50,TRUE,'/images/cpu/7600x.png');
+('CPU','AMD Ryzen 5 7600X','AMD','6-core efficient gaming CPU','{"cores":6,"threads":12,"base_clock":"4.7 GHz","boost_clock":"5.3 GHz","socket":"AM5","tdp":"105W"}',249.99,50,TRUE,'/images/cpu/7600x.png', 4.7);
 
 -- =========================
 -- GPU
@@ -38,7 +27,7 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('GPU','AMD RX 7800 XT','AMD','1440p gaming GPU','{"vram":"16GB GDDR6","boost_clock":"2.3 GHz","power_draw":"230W","ray_tracing":true}',499.99,35,TRUE,'/images/gpu/7800xt.png', 4.7),
 ('GPU','NVIDIA RTX 4060 Ti 16GB','NVIDIA','Midrange GPU with 16GB VRAM','{"vram":"16GB GDDR6","boost_clock":"2.4 GHz","power_draw":"220W","ray_tracing":true}',499.99,50,TRUE,'/images/gpu/4060ti.png', 4.5),
 ('GPU','AMD RX 7700 XT','AMD','Upper midrange GPU','{"vram":"12GB GDDR6","boost_clock":"2.2 GHz","power_draw":"180W","ray_tracing":true}',449.99,45,TRUE,'/images/gpu/7700xt.png', 4.4),
-('GPU','NVIDIA RTX 4060','NVIDIA','Entry-level RTX GPU','{"vram":"8GB GDDR6","boost_clock":"1.83 GHz","power_draw":"170W","ray_tracing":true}',299.99,60,TRUE,'/images/gpu/4060.png');
+('GPU','NVIDIA RTX 4060','NVIDIA','Entry-level RTX GPU','{"vram":"8GB GDDR6","boost_clock":"1.83 GHz","power_draw":"170W","ray_tracing":true}',299.99,60,TRUE,'/images/gpu/4060.png', 4.5);
 
 -- =========================
 -- Motherboard
@@ -53,7 +42,7 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('Motherboard','ASRock Z790 Taichi','ASRock','Premium Intel motherboard','{"socket":"LGA1700","chipset":"Z790","memory_support":"DDR5","m2_slots":5,"form_factor":"ATX"}',469.99,17,TRUE,'/images/mobo/z790taichi.png', 4.6),
 ('Motherboard','MSI MAG B650 Tomahawk','MSI','Value AM5 motherboard','{"socket":"AM5","chipset":"B650","memory_support":"DDR5","m2_slots":4,"form_factor":"ATX"}',219.99,40,TRUE,'/images/mobo/b650tomahawk.png', 4.7),
 ('Motherboard','ASUS TUF Gaming Z790-Plus','ASUS','Durable gaming motherboard','{"socket":"LGA1700","chipset":"Z790","memory_support":"DDR5","m2_slots":4,"form_factor":"ATX"}',249.99,35,TRUE,'/images/mobo/tufoz790.png', 4.5),
-('Motherboard','Gigabyte B650 Aorus Elite','Gigabyte','Midrange AM5 motherboard','{"socket":"AM5","chipset":"B650","memory_support":"DDR5","m2_slots":4,"form_factor":"ATX"}',229.99,38,TRUE,'/images/mobo/b650elite.png');
+('Motherboard','Gigabyte B650 Aorus Elite','Gigabyte','Midrange AM5 motherboard','{"socket":"AM5","chipset":"B650","memory_support":"DDR5","m2_slots":4,"form_factor":"ATX"}',229.99,38,TRUE,'/images/mobo/b650elite.png', 4.4);
 
 -- =========================
 -- Power Supply
@@ -68,7 +57,7 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('Power Supply','ASUS ROG Thor 1200P2','ASUS','1200W Platinum PSU','{"wattage":1200,"efficiency":"Platinum","modular":true,"form_factor":"ATX"}',399.99,15,TRUE,'/images/psu/thor1200.png', 4.8),
 ('Power Supply','be quiet! Dark Power 13 1000W','be quiet!','Silent Platinum PSU','{"wattage":1000,"efficiency":"Platinum","modular":true,"form_factor":"ATX"}',279.99,20,TRUE,'/images/psu/darkpower13.png', 4.6),
 ('Power Supply','Cooler Master V850 SFX','Cooler Master','850W SFX PSU','{"wattage":850,"efficiency":"Gold","modular":true,"form_factor":"SFX"}',169.99,30,TRUE,'/images/psu/v850sfx.png', 4.7),
-('Power Supply','Thermaltake Toughpower GF3 1000W','Thermaltake','1000W ATX 3.0 Gold PSU','{"wattage":1000,"efficiency":"Gold","modular":true,"form_factor":"ATX"}',189.99,28,TRUE,'/images/psu/gf3.png');
+('Power Supply','Thermaltake Toughpower GF3 1000W','Thermaltake','1000W ATX 3.0 Gold PSU','{"wattage":1000,"efficiency":"Gold","modular":true,"form_factor":"ATX"}',189.99,28,TRUE,'/images/psu/gf3.png', 4.3);
 
 -- =========================
 -- Case
@@ -83,7 +72,7 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('Case','Hyte Y60','Hyte','Panoramic glass case','{"form_factor_support":["ATX","Micro-ATX"],"gpu_clearance":"380mm","radiator_support":"360mm","drive_bays":5}',199.99,35,TRUE,'/images/case/y60.png', 4.6),
 ('Case','be quiet! Silent Base 802','be quiet!','Silent modular case','{"form_factor_support":["ATX","Micro-ATX"],"gpu_clearance":"360mm","radiator_support":"360mm","drive_bays":6}',179.99,30,TRUE,'/images/case/802.png', 4.7),
 ('Case','Thermaltake Tower 500','Thermaltake','Vertical showcase case','{"form_factor_support":["ATX","Micro-ATX"],"gpu_clearance":"400mm","radiator_support":"360mm","drive_bays":5}',169.99,28,TRUE,'/images/case/tower500.png', 4.5),
-('Case','ASUS ROG Hyperion GR701','ASUS','Extreme full tower case','{"form_factor_support":["E-ATX","ATX"],"gpu_clearance":"450mm","radiator_support":"420mm","drive_bays":8}',299.99,20,TRUE,'/images/case/gr701.png');
+('Case','ASUS ROG Hyperion GR701','ASUS','Extreme full tower case','{"form_factor_support":["E-ATX","ATX"],"gpu_clearance":"450mm","radiator_support":"420mm","drive_bays":8}',299.99,20,TRUE,'/images/case/gr701.png', 4.8);
 
 -- =========================
 -- Ram
@@ -98,7 +87,7 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('Ram','G.Skill Ripjaws V 16GB','G.Skill','Value DDR5 RAM','{"capacity":"16GB","speed":"5600MHz","type":"DDR5","cas_latency":36,"voltage":"1.25V"}',84.99,50,TRUE,'/images/ram/ripjaws16.png', 4.8),
 ('Ram','Kingston Fury Beast 32GB','Kingston','High-speed DDR5 RAM','{"capacity":"32GB","speed":"6000MHz","type":"DDR5","cas_latency":30,"voltage":"1.35V"}',179.99,35,TRUE,'/images/ram/fury32.png', 4.5),
 ('Ram','Teamgroup T-Force Xtreem 32GB','Teamgroup','Premium overclocked DDR5 RAM','{"capacity":"32GB","speed":"6400MHz","type":"DDR5","cas_latency":28,"voltage":"1.35V"}',239.99,25,TRUE,'/images/ram/xtreem32.png', 4.6),
-('Ram','Crucial Ballistix 32GB','Crucial','Efficient DDR5 RAM','{"capacity":"32GB","speed":"6000MHz","type":"DDR5","cas_latency":30,"voltage":"1.35V"}',189.99,30,TRUE,'/images/ram/ballistix32.png');
+('Ram','Crucial Ballistix 32GB','Crucial','Efficient DDR5 RAM','{"capacity":"32GB","speed":"6000MHz","type":"DDR5","cas_latency":30,"voltage":"1.35V"}',189.99,30,TRUE,'/images/ram/ballistix32.png', 4.6);
 
 -- =========================
 -- Storage
@@ -113,4 +102,4 @@ INSERT INTO products (category_name, product_name, brand, product_description, s
 ('Storage','Seagate Barracuda 4TB','Seagate','High-capacity HDD','{"capacity":"4TB","interface":"SATA","read_speed":"220 MB/s","write_speed":"220 MB/s","form_factor":"3.5 inch"}',99.99,40,TRUE,'/images/storage/barracuda4tb.png', 4.8),
 ('Storage','Samsung 980 Pro 1TB','Samsung','High-speed NVMe SSD','{"capacity":"1TB","interface":"PCIe 4.0","read_speed":"7000 MB/s","write_speed":"5000 MB/s","form_factor":"M.2 2280"}',149.99,50,TRUE,'/images/storage/980pro1tb.png', 4.9),
 ('Storage','Crucial P3 Plus 2TB','Crucial','Affordable NVMe SSD','{"capacity":"2TB","interface":"PCIe 4.0","read_speed":"5000 MB/s","write_speed":"4200 MB/s","form_factor":"M.2 2280"}',99.99,45,TRUE,'/images/storage/p3plus2tb.png', 4.7),
-('Storage','WD Black SN770 1TB','Western Digital','High performance NVMe SSD','{"capacity":"1TB","interface":"PCIe 4.0","read_speed":"5150 MB/s","write_speed":"4900 MB/s","form_factor":"M.2 2280"}',109.99,50,TRUE,'/images/storage/sn7701tb.png');
+('Storage','WD Black SN770 1TB','Western Digital','High performance NVMe SSD','{"capacity":"1TB","interface":"PCIe 4.0","read_speed":"5150 MB/s","write_speed":"4900 MB/s","form_factor":"M.2 2280"}',109.99,50,TRUE,'/images/storage/sn7701tb.png', 4.5);
