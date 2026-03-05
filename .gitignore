@@ -3,4 +3,4 @@ node_modules
 docker-compose.yaml
 products.json
 images/
-pc-parts-api/mysql_data/
+mysql_data/
