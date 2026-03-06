@@ -2,5 +2,4 @@ node_modules
 .env
 docker-compose.yaml
 products.json
-images/
 mysql_data/
