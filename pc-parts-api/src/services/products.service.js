@@ -14,14 +14,25 @@ export async function searchProducts({ category, brand, minPrice, maxPrice } = {
 	const conditions = [];
 	const params = [];
 
-	if (category) {
+	const categories = category ? [].concat(category) : [];
+	const brands = brand ? [].concat(brand) : [];
+
+	if (categories.length === 1) {
 		conditions.push("category_name = ?");
-		params.push(category);
+		params.push(categories[0]);
+	} else if (categories.length > 1) {
+		conditions.push(`category_name IN (${categories.map(() => "?").join(", ")})`);
+		params.push(...categories);
 	}
-	if (brand) {
+
+	if (brands.length === 1) {
 		conditions.push("brand = ?");
-		params.push(brand);
+		params.push(brands[0]);
+	} else if (brands.length > 1) {
+		conditions.push(`brand IN (${brands.map(() => "?").join(", ")})`);
+		params.push(...brands);
 	}
+
 	if (minPrice !== undefined) {
 		conditions.push("price >= ?");
 		params.push(minPrice);
