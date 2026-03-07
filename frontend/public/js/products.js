@@ -4,6 +4,7 @@ const pagination = document.querySelector(".products-pagination");
 const activeFiltersBar = document.getElementById("active-filters");
 const clearAllBtn = document.querySelector(".filters-clear");
 
+const SITE_BASE = "http://localhost:8002";
 const API_BASE = "http://localhost:8001/api/products";
 const ITEMS_PER_PAGE = 20;
 let currentPage = 1;
@@ -109,9 +110,9 @@ function renderPage(products, page) {
       <p class="products-card__desc">${p.product_description}</p>
       <div class="product-card__bottom">
         <span class="price">$${Number(p.price).toFixed(2)}</span>
-        <a href="#" class="product-link">View →</a>
+        <a href="/products/${p.id}" class="product-link">View →</a>
       </div>
-    `;
+          `;
     grid.appendChild(li);
   });
 }

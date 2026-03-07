@@ -54,3 +54,24 @@ export const searchProducts = async (req, res) => {
 		res.status(500).json({ error: err.message });
 	}
 };
+
+// Render homepage
+export const renderHomePage = (req, res) => {
+  res.redirect("/products");
+};
+
+// Render products listing page
+export const renderProductsPage = async (req, res) => {
+  try {
+    const products = await productsService.getAllProducts();
+
+    res.render("products/index", {
+      products,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error loading products page");
+  }
+};
+

@@ -216,3 +216,22 @@ body {
 	color: var(--color-primary);
 	transform: translateY(-3px);
 }
+
+
+/* =========================================
+FORCE CUSTOM CURSOR EVERYWHERE
+========================================= */
+
+*,
+*::before,
+*::after{
+cursor:none !important;
+}
+
+a,
+button,
+input,
+textarea,
+select{
+cursor:none !important;
+}

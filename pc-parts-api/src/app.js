@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import cors from "cors";
 import productsRoutes from "./routers/products.routes.js";
+import pagesRoutes from "./routers/pages.routes.js";
 
 //configure Express.js app
 const app = express();
@@ -20,5 +21,6 @@ app.use(cors());
 
 //routers
 app.use("/api/products", productsRoutes);
+app.use("/", pagesRoutes);
 
 export default app;
