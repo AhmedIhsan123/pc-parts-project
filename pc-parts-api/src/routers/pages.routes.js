@@ -6,5 +6,4 @@ const router = express.Router();
 router.get("/", productsController.renderHomePage);
 router.get("/products", productsController.renderProductsPage);
 
-
 export default router;

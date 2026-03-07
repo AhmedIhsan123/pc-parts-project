@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-DROP TABLE IF EXISTS products;
-
-CREATE TABLE products (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-
-  name VARCHAR(150) NOT NULL,
-  brand VARCHAR(80) NOT NULL,
-  category VARCHAR(60) NOT NULL,
-
-  short_desc VARCHAR(255) NOT NULL,
-  description TEXT NOT NULL,
-
-  price DECIMAL(10,2) NOT NULL,
-  rating DECIMAL(2,1) DEFAULT 0.0,
-  stock_qty INT NOT NULL DEFAULT 0,
-
-  image_urls JSON NOT NULL,
-  specs JSON NULL,
-
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-=======
 DROP DATABASE IF EXISTS pcparts;
 CREATE DATABASE pcparts;
 USE pcparts;
@@ -47,5 +25,4 @@ CREATE TABLE products (
     FOREIGN KEY (category_name)
         REFERENCES categories(category)
         ON DELETE CASCADE
->>>>>>> 3691c344d172ccb9191d1ec3056bedcccf58f169
 );
