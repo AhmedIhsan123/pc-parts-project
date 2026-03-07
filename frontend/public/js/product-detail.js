@@ -34,7 +34,7 @@ PRODUCT IMAGE
 const image = document.getElementById("productImage");
 const thumbs = document.querySelectorAll(".product-thumbnails .thumb");
 
-const mainImg = `http://localhost:8001${product.image_url}`;
+const mainImg = `http://localhost:8002${product.image_url}`;
 
 if(image){
 	image.src = mainImg;
@@ -46,7 +46,7 @@ if(thumbs){
 
 	thumbs.forEach((thumb,i)=>{
 
-		thumb.src = `http://localhost:8001${gallery[i] || gallery[0]}`;
+		thumb.src = `http://localhost:8002${gallery[i] || gallery[0]}`;
 
 		thumb.addEventListener("click",()=>{
 
@@ -284,7 +284,7 @@ const card = document.createElement("div");
 card.className = "similar-card";
 
 card.innerHTML = `
-<img src="http://localhost:8001${p.image_url}" />
+<img src="http://localhost:8002${p.image_url}" />
 
 <div class="similar-name">${p.product_name}</div>
 
