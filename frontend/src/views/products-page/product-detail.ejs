@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product | SurgeForge</title>
+
+<link rel="icon" href="/images/SF_Logo.png" />
+
+<link rel="stylesheet" href="/css/base/styles.css">
+<link rel="stylesheet" href="/css/products-page/product-detail.css">
+<link rel="stylesheet" href="/css/base/nav.css">
+<link rel="stylesheet" href="/css/base/footer.css">
+<link rel="stylesheet" href="/css/base/cursor.css">
+
+<script src="/js/cursor.js" defer></script>
+<script src="/js/product-detail.js" defer></script>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+
+<div class="custom-cursor"></div>
+
+<%- include("../partials/navigation") %>
+
+<main class="product-detail-page">
+
+
+<!-- =========================
+BREADCRUMB
+========================= -->
+
+<div class="breadcrumb">
+
+<a href="/">Home</a>
+
+<span>/</span>
+
+<a href="/products">Products</a>
+
+<span>/</span>
+
+<span id="productNameBreadcrumb">Product</span>
+
+</div>
+
+
+
+<!-- =========================
+PRODUCT DETAIL GRID
+========================= -->
+
+<div class="product-detail-grid">
+
+<!-- =========================
+PRODUCT IMAGE
+========================= -->
+
+<div class="product-image-column">
+
+<div class="product-image-container">
+
+<div class="product-actions-floating">
+
+<div class="action-icon wishlist-btn">
+<i data-lucide="heart"></i>
+</div>
+
+<div class="action-icon share-btn">
+<i data-lucide="share-2"></i>
+</div>
+
+</div>
+
+<div class="product-main-image">
+<img id="productImage" src="" alt="Product Image">
+</div>
+
+<div class="product-thumbnails" id="productThumbnails">
+
+<img class="thumb active" src="" alt="">
+<img class="thumb" src="" alt="">
+<img class="thumb" src="" alt="">
+<img class="thumb" src="" alt="">
+
+</div>
+
+</div>
+
+<!-- FEATURE BOXES UNDER IMAGE -->
+
+<div class="feature-grid image-features">
+
+<div class="feature-box">
+<i data-lucide="cpu"></i>
+<div>
+<strong>High Performance</strong>
+<p>Optimized for gaming</p>
+</div>
+</div>
+
+<div class="feature-box">
+<i data-lucide="zap"></i>
+<div>
+<strong>Overclock Ready</strong>
+<p>Unlocked performance</p>
+</div>
+</div>
+
+<div class="feature-box">
+<i data-lucide="snowflake"></i>
+<div>
+<strong>Thermal Efficient</strong>
+<p>Runs cooler under load</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+PRODUCT INFO
+========================= -->
+
+<div class="product-info">
+
+<div class="product-meta">
+
+<span class="product-category-badge" id="productCategory"></span>
+
+</div>
+
+
+<h1 class="product-title" id="productName"></h1>
+
+
+<div class="rating-row">
+
+<div class="rating-stars" id="productStars">
+
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+
+</div>
+
+<span id="productRating"></span>
+
+</div>
+
+
+<div class="product-price">
+
+$<span id="productPrice"></span>
+
+</div>
+
+
+<div class="stock-box">
+
+<i data-lucide="check-circle"></i>
+
+<span id="stockStatus"></span>
+
+</div>
+
+
+<p id="productDescription"></p>
+
+
+
+<!-- =========================
+QUANTITY
+========================= -->
+
+<div class="qty-container">
+
+<span class="qty-label">Quantity:</span>
+
+<div class="qty-box">
+
+<button class="qty-btn minus">-</button>
+
+<input class="qty-input" type="number" value="1" min="1">
+
+<button class="qty-btn plus">+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+ACTION BUTTONS
+========================= -->
+
+<div class="product-buttons">
+
+<button class="btn-primary add-to-cart-btn">
+
+<i data-lucide="shopping-cart"></i>
+
+Add to Cart
+
+</button>
+
+<button class="btn-outline buy-now-btn">
+
+Buy Now
+
+</button>
+
+<button class="btn-outline wishlist-btn">
+
+<i data-lucide="heart"></i>
+
+Wishlist
+
+</button>
+
+<button class="btn-outline share-btn">
+
+<i data-lucide="share-2"></i>
+
+Share
+
+</button>
+
+</div>
+
+
+
+<!-- =========================
+FEATURE BOXES
+========================= -->
+
+<div class="feature-grid">
+
+<div class="feature-box">
+
+<i data-lucide="truck"></i>
+
+<div>
+
+<strong>Free Shipping</strong>
+<p>Orders over $100</p>
+
+</div>
+
+</div>
+
+
+<div class="feature-box">
+
+<i data-lucide="shield-check"></i>
+
+<div>
+
+<strong>Warranty</strong>
+<p>Manufacturer backed</p>
+
+</div>
+
+</div>
+
+
+<div class="feature-box">
+
+<i data-lucide="rotate-ccw"></i>
+
+<div>
+
+<strong>30-Day Returns</strong>
+<p>Hassle-free returns</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+TECH SPECS
+========================= -->
+
+<section class="spec-section">
+
+<h2 class="spec-title">
+<i data-lucide="activity"></i>
+Technical Specifications
+</h2>
+
+<div class="spec-divider"></div>
+
+<div class="spec-table" id="specGrid">
+
+</div>
+
+<div class="performance-section">
+
+<h3 class="performance-title">
+<i data-lucide="trending-up"></i>
+Performance Analysis
+</h3>
+
+<div class="performance-grid">
+
+<div class="perf-item">
+<span class="perf-label">Cores</span>
+<div class="perf-bar">
+<div class="perf-fill" id="coresBar"></div>
+</div>
+</div>
+
+<div class="perf-item">
+<span class="perf-label">Boost Clock</span>
+<div class="perf-bar">
+<div class="perf-fill" id="clockBar"></div>
+</div>
+</div>
+
+<div class="perf-item">
+<span class="perf-label">Power (TDP)</span>
+<div class="perf-bar">
+<div class="perf-fill" id="tdpBar"></div>
+</div>
+</div>
+
+</div>
+
+<div class="tier-box" id="performanceTier">
+<span class="tier-label">Performance Tier</span>
+<span class="tier-value"></span>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+REVIEWS
+========================= -->
+
+<section class="review-section">
+
+<div class="review-header">
+
+<h2 class="spec-title">
+<i data-lucide="message-circle"></i>
+Customer Reviews
+</h2>
+
+<div class="spec-divider"></div>
+
+<button class="btn-primary write-review-btn">
+
+Write a Review
+
+</button>
+
+</div>
+
+
+<div class="review-card">
+
+<div class="review-name">
+
+Alex Thompson • Mar 1, 2026
+
+</div>
+
+<div class="review-stars">
+
+★★★★★
+
+</div>
+
+<p class="review-text">
+
+Paired with a SAGE-X GPU and this thing absolutely rips.
+Zero bottleneck even at 1440p ultra settings.
+
+</p>
+
+</div>
+
+
+<div class="review-card">
+
+<div class="review-name">
+
+Jordan Lee • Feb 22, 2026
+
+</div>
+
+<div class="review-stars">
+
+★★★★★
+
+</div>
+
+<p class="review-text">
+
+One of the best CPUs I've used. Fast, stable, and perfect for streaming + gaming.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+SIMILAR PRODUCTS
+========================= -->
+
+<section class="similar-products">
+
+<div class="similar-products">
+
+<h2 class="spec-title">
+<i data-lucide="layers"></i>
+Similar Products
+</h2>
+
+<div class="spec-divider"></div>
+
+<div class="similar-grid" id="similarGrid"></div>
+
+<!-- JS will inject products -->
+
+</div>
+
+</div>
+</section>
+
+<div class="review-modal" id="reviewModal">
+
+<div class="review-modal-content">
+
+<h3>Write a Review</h3>
+
+<input type="text" id="reviewName" placeholder="Your Name">
+
+<select id="reviewRating">
+<option value="5">★★★★★</option>
+<option value="4">★★★★</option>
+<option value="3">★★★</option>
+<option value="2">★★</option>
+<option value="1">★</option>
+</select>
+
+<textarea id="reviewText" placeholder="Your review..."></textarea>
+
+<div class="review-actions">
+
+<button id="submitReview" class="btn-primary">
+Submit Review
+</button>
+
+<button id="closeReview" class="btn-outline">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<%- include("../partials/footer") %>
+
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>

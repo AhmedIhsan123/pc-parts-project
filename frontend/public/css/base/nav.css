@@ -18,11 +18,22 @@
 
 /* ---------- Logo ---------- */
 
-.logo {
-	font-size: 1.4rem;
-	font-weight: 600;
-	letter-spacing: 0.5px;
-	user-select: none;
+.logo{
+	font-size:1.4rem;
+	font-weight:600;
+	letter-spacing:0.5px;
+	user-select:none;
+
+	display:flex;
+	align-items:center;
+	gap:0;
+
+	text-decoration:none;
+}
+
+.logo span{
+	margin:0;
+	padding:0;
 }
 
 .logo-surge {

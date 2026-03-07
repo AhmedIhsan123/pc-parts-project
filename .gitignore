@@ -3,3 +3,6 @@ node_modules
 docker-compose.yml
 products.json
 images/
+docker-compose.yaml
+products.json
+mysql_data/
