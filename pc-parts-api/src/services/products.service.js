@@ -10,7 +10,15 @@ export async function getProductById(id) {
 	return rows[0] ?? null;
 }
 
-export async function searchProducts({ category, brand, minPrice, maxPrice } = {}) {
+const SORT_MAP = {
+	"featured":   "id ASC",
+	"price-asc":  "price ASC",
+	"price-desc": "price DESC",
+	"rating":     "rating DESC",
+	"name-asc":   "product_name ASC",
+};
+
+export async function searchProducts({ category, brand, minPrice, maxPrice, minRating, sort } = {}) {
 	const conditions = [];
 	const params = [];
 
@@ -41,8 +49,13 @@ export async function searchProducts({ category, brand, minPrice, maxPrice } = {
 		conditions.push("price <= ?");
 		params.push(maxPrice);
 	}
+	if (minRating !== undefined) {
+		conditions.push("rating >= ?");
+		params.push(minRating);
+	}
 
 	const whereClause = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
-	const [rows] = await pool.query(`SELECT * FROM products ${whereClause}`, params);
+	const orderClause = `ORDER BY ${SORT_MAP[sort] ?? SORT_MAP["featured"]}`;
+	const [rows] = await pool.query(`SELECT * FROM products ${whereClause} ${orderClause}`, params);
 	return rows;
 }

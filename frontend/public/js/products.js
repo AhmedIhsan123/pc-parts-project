@@ -5,6 +5,8 @@ const activeFiltersBar = document.getElementById("active-filters");
 const clearAllBtn = document.querySelector(".filters-clear");
 
 const SITE_BASE = "http://localhost:8002";
+const sortSelect = document.getElementById("sort-select");
+
 const API_BASE = "http://localhost:8001/api/products";
 const ITEMS_PER_PAGE = 20;
 let currentPage = 1;
@@ -35,18 +37,25 @@ function getFilters() {
   const minPrice = document.getElementById("price-min").value.trim();
   const maxPrice = document.getElementById("price-max").value.trim();
 
+  const ratingEl = document.querySelector('input[name="rating"]:checked');
+  const minRating = ratingEl ? ratingEl.value : null;
+
+  const sort = sortSelect.value !== "featured" ? sortSelect.value : null;
+
   return {
     categories: checkedCategories,
     brands: checkedBrands,
     minPrice: minPrice !== "" ? parseFloat(minPrice) : null,
     maxPrice: maxPrice !== "" ? parseFloat(maxPrice) : null,
+    minRating,
+    sort,
   };
 }
 
 // ===== Build query params & fetch =====
 
 function buildQueryString(filters) {
-  const { categories, brands, minPrice, maxPrice } = filters;
+  const { categories, brands, minPrice, maxPrice, minRating, sort } = filters;
   const parts = [];
 
   if (categories.length) parts.push(`category=${categories.join(",")}`);
@@ -55,15 +64,18 @@ function buildQueryString(filters) {
   const numericParams = new URLSearchParams();
   if (minPrice !== null) numericParams.set("minPrice", minPrice);
   if (maxPrice !== null) numericParams.set("maxPrice", maxPrice);
+  if (minRating !== null) numericParams.set("minRating", minRating);
+  if (sort !== null) numericParams.set("sort", sort);
   if (numericParams.toString()) parts.push(numericParams.toString());
 
   return parts.join("&");
 }
 
 async function fetchProducts(filters) {
-  const { categories, brands, minPrice, maxPrice } = filters;
+  const { categories, brands, minPrice, maxPrice, minRating, sort } = filters;
   const hasFilters =
-    categories.length || brands.length || minPrice !== null || maxPrice !== null;
+    categories.length || brands.length || minPrice !== null || maxPrice !== null ||
+    minRating !== null || sort !== null;
 
   if (!hasFilters) {
     history.replaceState(null, "", window.location.pathname);
@@ -169,6 +181,15 @@ function renderActiveFilters(filters) {
       applyFilters();
     });
   }
+
+  // Rating tag
+  if (filters.minRating !== null) {
+    addTag(`★ ${filters.minRating}+`, () => {
+      const checked = document.querySelector('input[name="rating"]:checked');
+      if (checked) checked.checked = false;
+      applyFilters();
+    });
+  }
 }
 
 // ===== Main apply function =====
@@ -210,6 +231,14 @@ document.querySelectorAll('input[name="category"], input[name="brand"]').forEach
   el.addEventListener("change", applyFilters);
 });
 
+// Rating radios — instant response
+document.querySelectorAll('input[name="rating"]').forEach((el) => {
+  el.addEventListener("change", applyFilters);
+});
+
+// Sort select
+sortSelect.addEventListener("change", applyFilters);
+
 // Price inputs — debounced so we don't fire on every keystroke
 const debouncedApply = debounce(applyFilters, 500);
 document.getElementById("price-min").addEventListener("input", debouncedApply);
@@ -220,6 +249,9 @@ clearAllBtn.addEventListener("click", () => {
   document.querySelectorAll('input[name="category"], input[name="brand"]').forEach((el) => {
     el.checked = false;
   });
+  const checkedRating = document.querySelector('input[name="rating"]:checked');
+  if (checkedRating) checkedRating.checked = false;
+  sortSelect.value = "featured";
   document.getElementById("price-min").value = "";
   document.getElementById("price-max").value = "";
   applyFilters();
@@ -244,6 +276,16 @@ function restoreFiltersFromURL() {
 
   if (params.has("minPrice")) document.getElementById("price-min").value = params.get("minPrice");
   if (params.has("maxPrice")) document.getElementById("price-max").value = params.get("maxPrice");
+
+  if (params.has("minRating")) {
+    const el = document.querySelector(`input[name="rating"][value="${params.get("minRating")}"]`);
+    if (el) el.checked = true;
+  }
+
+  if (params.has("sort")) {
+    const val = params.get("sort");
+    if ([...sortSelect.options].some((o) => o.value === val)) sortSelect.value = val;
+  }
 }
 
 restoreFiltersFromURL();
