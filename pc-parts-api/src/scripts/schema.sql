@@ -20,6 +20,7 @@ CREATE TABLE products (
     stock INT NOT NULL DEFAULT 0,
     in_stock BOOLEAN NOT NULL DEFAULT TRUE,
     image_url VARCHAR(500),
+    rating DECIMAL(2,1) DEFAULT NULL CHECK (rating >= 0.0 AND rating <= 5.0),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_name)
         REFERENCES categories(category)
