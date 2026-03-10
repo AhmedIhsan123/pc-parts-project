@@ -438,6 +438,64 @@
 	flex-shrink: 0;
 }
 
+/* Price presets */
+.price-presets {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.price-preset {
+	font-size: 0.75rem;
+	padding: 4px 10px;
+	border-radius: 99px;
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	color: var(--text-muted);
+	font-family: inherit;
+	transition: var(--transition-smooth);
+}
+
+.price-preset:hover {
+	border-color: rgba(249, 215, 22, 0.4);
+	color: var(--color-primary);
+	background: rgba(249, 215, 22, 0.05);
+}
+
+.price-preset.active {
+	background: rgba(249, 215, 22, 0.12);
+	border-color: rgba(249, 215, 22, 0.5);
+	color: var(--color-primary);
+}
+
+/* =========================================
+   CATEGORY-SPECIFIC FILTER LABELS
+   ========================================= */
+
+.filter-section-label {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md) 0 var(--spacing-xs);
+	margin-top: var(--spacing-xs);
+}
+
+.filter-section-label span {
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--color-primary);
+}
+
+.filter-section-label::before,
+.filter-section-label::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: rgba(249, 215, 22, 0.2);
+}
+
 /* =========================================
    ACTIVE FILTERS BAR
    ========================================= */

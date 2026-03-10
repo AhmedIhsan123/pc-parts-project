@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>SurgeForge - Products</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="/images/SF_Logo.png" />
+
+		<link rel="stylesheet" href="/css/base/styles.css" />
+		<link rel="stylesheet" href="/css/products-page/products.css" />
+		<link rel="stylesheet" href="/css/base/nav.css" />
+		<link rel="stylesheet" href="/css/base/footer.css" />
+		<link rel="stylesheet" href="/css/base/cursor.css" />
+
+		<script src="/js/cursor.js" defer></script>
+		<script src="/js/default.js" defer></script>
+
+		<!-- Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<!-- Custom cursor -->
+		<div class="custom-cursor"></div>
+
+		<header><%- include('../partials/navigation') %></header>
+
+		<main class="products-page">
+			<!-- PAGE HEADER -->
+			<section class="products-hero section" aria-labelledby="products-heading">
+				<div class="container">
+					<div class="products-hero__inner">
+						<div>
+							<p class="products-hero__breadcrumb">
+								<a href="/">Home</a>
+								<span aria-hidden="true"> / </span>
+								<span>Products</span>
+							</p>
+							<h1 id="products-heading" class="products-hero__title">
+								All <span class="accent">Components</span>
+							</h1>
+							<p class="products-hero__sub">
+								<span id="products-count">140</span> parts across 7 categories —
+								hand-picked for performance.
+							</p>
+						</div>
+						<div class="products-hero__sort-row">
+							<label for="sort-select" class="sr-only">Sort by</label>
+							<div class="select-wrapper">
+								<select id="sort-select" class="products-sort">
+									<option value="featured">Sort: Featured</option>
+									<option value="price-asc">Price: Low → High</option>
+									<option value="price-desc">Price: High → Low</option>
+									<option value="rating">Top Rated</option>
+									<option value="newest">Newest</option>
+									<option value="name-asc">Name: A → Z</option>
+								</select>
+								<span class="select-arrow" aria-hidden="true">▾</span>
+							</div>
+							<button
+								class="btn-icon filter-toggle-mobile"
+								aria-label="Toggle filters"
+								aria-expanded="false"
+							>
+								<span>⚙</span> Filters
+							</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- MAIN LAYOUT -->
+			<div class="products-layout container">
+				<!-- ===== SIDEBAR FILTERS ===== -->
+				<aside
+					class="filters-sidebar"
+					id="filters-sidebar"
+					aria-label="Product filters"
+				>
+					<div class="filters-sidebar__inner">
+						<div class="filters-header">
+							<span class="filters-title">Filters</span>
+							<button class="filters-clear" type="button">Clear All</button>
+						</div>
+
+						<!-- CATEGORY -->
+						<div class="filter-group">
+							<button
+								class="filter-group__toggle"
+								aria-expanded="true"
+								aria-controls="filter-category"
+							>
+								Category
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div class="filter-group__body" id="filter-category">
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check">
+											<input type="checkbox" name="category" value="gpu" />
+											<span class="check-box"></span>
+											<span>GPUs</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+									<li>
+										<label class="filter-check">
+											<input type="checkbox" name="category" value="cpu" />
+											<span class="check-box"></span>
+											<span>CPUs</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+									<li>
+										<label class="filter-check">
+											<input
+												type="checkbox"
+												name="category"
+												value="motherboard"
+											/>
+											<span class="check-box"></span>
+											<span>Motherboards</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+									<li>
+										<label class="filter-check">
+											<input type="checkbox" name="category" value="psu" />
+											<span class="check-box"></span>
+											<span>PSUs</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+									<li>
+										<label class="filter-check">
+											<input type="checkbox" name="category" value="ram" />
+											<span class="check-box"></span>
+											<span>RAM</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+									<li>
+										<label class="filter-check">
+											<input type="checkbox" name="category" value="storage" />
+											<span class="check-box"></span>
+											<span>Storage</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+									<li>
+										<label class="filter-check">
+											<input type="checkbox" name="category" value="case" />
+											<span class="check-box"></span>
+											<span>Cases</span>
+											<span class="filter-count">20</span>
+										</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- PRICE RANGE -->
+						<div class="filter-group">
+							<button
+								class="filter-group__toggle"
+								aria-expanded="true"
+								aria-controls="filter-price"
+							>
+								Price Range
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div class="filter-group__body" id="filter-price">
+								<div class="price-range">
+									<div class="price-inputs">
+										<div class="price-field">
+											<label for="price-min" class="price-label">Min ($)</label>
+											<input
+												type="number"
+												id="price-min"
+												class="price-input"
+												placeholder="0"
+												min="0"
+											/>
+										</div>
+										<span class="price-dash" aria-hidden="true">—</span>
+										<div class="price-field">
+											<label for="price-max" class="price-label">Max ($)</label>
+											<input
+												type="number"
+												id="price-max"
+												class="price-input"
+												placeholder="3000"
+												max="3000"
+											/>
+										</div>
+									</div>
+									<div class="price-presets">
+										<button class="price-preset" type="button">
+											Under $100
+										</button>
+										<button class="price-preset" type="button">
+											$100–$300
+										</button>
+										<button class="price-preset" type="button">
+											$300–$600
+										</button>
+										<button class="price-preset" type="button">$600+</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- BRAND -->
+						<div class="filter-group">
+							<button
+								class="filter-group__toggle"
+								aria-expanded="true"
+								aria-controls="filter-brand"
+							>
+								Brand
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div class="filter-group__body" id="filter-brand">
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="brand" value="amd" /><span
+												class="check-box"
+											></span
+											><span>AMD</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="brand" value="intel" /><span
+												class="check-box"
+											></span
+											><span>Intel</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="nvidia"
+											/><span class="check-box"></span
+											><span>NVIDIA</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="brand" value="asus" /><span
+												class="check-box"
+											></span
+											><span>ASUS</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="brand" value="msi" /><span
+												class="check-box"
+											></span
+											><span>MSI</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="gigabyte"
+											/><span class="check-box"></span
+											><span>Gigabyte</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="corsair"
+											/><span class="check-box"></span
+											><span>Corsair</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="gskill"
+											/><span class="check-box"></span
+											><span>G.Skill</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="samsung"
+											/><span class="check-box"></span
+											><span>Samsung</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="seagate"
+											/><span class="check-box"></span
+											><span>Seagate</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="brand" value="evga" /><span
+												class="check-box"
+											></span
+											><span>EVGA</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="seasonic"
+											/><span class="check-box"></span
+											><span>Seasonic</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="brand" value="nzxt" /><span
+												class="check-box"
+											></span
+											><span>NZXT</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="fractal"
+											/><span class="check-box"></span
+											><span>Fractal Design</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="brand"
+												value="lianli"
+											/><span class="check-box"></span
+											><span>Lian Li</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- RATING -->
+						<div class="filter-group">
+							<button
+								class="filter-group__toggle"
+								aria-expanded="true"
+								aria-controls="filter-rating"
+							>
+								Customer Rating
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div class="filter-group__body" id="filter-rating">
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check filter-check--stars"
+											><input type="radio" name="rating" value="4.5" /><span
+												class="check-box check-box--radio"
+											></span
+											><span class="stars-label">★★★★★ 4.5+</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check filter-check--stars"
+											><input type="radio" name="rating" value="4.0" /><span
+												class="check-box check-box--radio"
+											></span
+											><span class="stars-label">★★★★☆ 4.0+</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check filter-check--stars"
+											><input type="radio" name="rating" value="3.5" /><span
+												class="check-box check-box--radio"
+											></span
+											><span class="stars-label">★★★½☆ 3.5+</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check filter-check--stars"
+											><input type="radio" name="rating" value="3.0" /><span
+												class="check-box check-box--radio"
+											></span
+											><span class="stars-label">★★★☆☆ 3.0+</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- AVAILABILITY -->
+						<div class="filter-group">
+							<button
+								class="filter-group__toggle"
+								aria-expanded="true"
+								aria-controls="filter-availability"
+							>
+								Availability
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div class="filter-group__body" id="filter-availability">
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="availability"
+												value="instock"
+											/><span class="check-box"></span
+											><span>In Stock</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="availability"
+												value="preorder"
+											/><span class="check-box"></span
+											><span>Pre-Order</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="availability"
+												value="backorder"
+											/><span class="check-box"></span
+											><span>Back Order</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== GPU-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="gpu">
+							<span>GPU Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="gpu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-gpu-vram"
+							>
+								VRAM
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-gpu-vram"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="vram" value="8" /><span
+												class="check-box"
+											></span
+											><span>8 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="vram" value="12" /><span
+												class="check-box"
+											></span
+											><span>12 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="vram" value="16" /><span
+												class="check-box"
+											></span
+											><span>16 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="vram" value="20" /><span
+												class="check-box"
+											></span
+											><span>20 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="vram" value="24" /><span
+												class="check-box"
+											></span
+											><span>24 GB</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="gpu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-gpu-arch"
+							>
+								Architecture
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-gpu-arch"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-arch"
+												value="ada"
+											/><span class="check-box"></span
+											><span>NVIDIA Ada Lovelace</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-arch"
+												value="blackwell"
+											/><span class="check-box"></span
+											><span>NVIDIA Blackwell</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-arch"
+												value="rdna3"
+											/><span class="check-box"></span
+											><span>AMD RDNA 3</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-arch"
+												value="rdna4"
+											/><span class="check-box"></span
+											><span>AMD RDNA 4</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="gpu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-gpu-segment"
+							>
+								Performance Tier
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-gpu-segment"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-tier"
+												value="entry"
+											/><span class="check-box"></span
+											><span>Entry (1080p)</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-tier"
+												value="mid"
+											/><span class="check-box"></span
+											><span>Mid (1440p)</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-tier"
+												value="high"
+											/><span class="check-box"></span
+											><span>High (4K)</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="gpu-tier"
+												value="flagship"
+											/><span class="check-box"></span
+											><span>Flagship</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== CPU-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="cpu">
+							<span>CPU Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="cpu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-cpu-socket"
+							>
+								Socket
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-cpu-socket"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="socket" value="am5" /><span
+												class="check-box"
+											></span
+											><span>AMD AM5</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="socket" value="am4" /><span
+												class="check-box"
+											></span
+											><span>AMD AM4</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="socket"
+												value="lga1700"
+											/><span class="check-box"></span
+											><span>Intel LGA1700</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="socket"
+												value="lga1851"
+											/><span class="check-box"></span
+											><span>Intel LGA1851</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="cpu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-cpu-cores"
+							>
+								Core Count
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-cpu-cores"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="cores" value="6" /><span
+												class="check-box"
+											></span
+											><span>6 Cores</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="cores" value="8" /><span
+												class="check-box"
+											></span
+											><span>8 Cores</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="cores" value="12" /><span
+												class="check-box"
+											></span
+											><span>12 Cores</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="cores" value="16" /><span
+												class="check-box"
+											></span
+											><span>16 Cores</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="cores" value="24" /><span
+												class="check-box"
+											></span
+											><span>24 Cores</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="cpu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-cpu-tdp"
+							>
+								TDP
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-cpu-tdp"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="tdp" value="65" /><span
+												class="check-box"
+											></span
+											><span>65W (Eco)</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="tdp" value="105" /><span
+												class="check-box"
+											></span
+											><span>105W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="tdp" value="125" /><span
+												class="check-box"
+											></span
+											><span>125W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="tdp" value="170" /><span
+												class="check-box"
+											></span
+											><span>170W+</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== MOTHERBOARD-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="motherboard">
+							<span>Motherboard Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="motherboard"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-mb-formfactor"
+							>
+								Form Factor
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-mb-formfactor"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="mb-form" value="atx" /><span
+												class="check-box"
+											></span
+											><span>ATX</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="mb-form"
+												value="matx"
+											/><span class="check-box"></span
+											><span>Micro-ATX</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="mb-form" value="itx" /><span
+												class="check-box"
+											></span
+											><span>Mini-ITX</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="mb-form"
+												value="eatx"
+											/><span class="check-box"></span><span>E-ATX</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="motherboard"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-mb-chipset"
+							>
+								Chipset
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-mb-chipset"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="chipset"
+												value="x670e"
+											/><span class="check-box"></span
+											><span>AMD X670E</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="chipset"
+												value="x670"
+											/><span class="check-box"></span
+											><span>AMD X670</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="chipset"
+												value="b650"
+											/><span class="check-box"></span
+											><span>AMD B650</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="chipset"
+												value="z790"
+											/><span class="check-box"></span
+											><span>Intel Z790</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="chipset"
+												value="b760"
+											/><span class="check-box"></span
+											><span>Intel B760</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="chipset"
+												value="z890"
+											/><span class="check-box"></span
+											><span>Intel Z890</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="motherboard"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-mb-ddr"
+							>
+								Memory Support
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-mb-ddr"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="mb-ddr" value="ddr4" /><span
+												class="check-box"
+											></span
+											><span>DDR4</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="mb-ddr" value="ddr5" /><span
+												class="check-box"
+											></span
+											><span>DDR5</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== PSU-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="psu">
+							<span>PSU Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="psu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-psu-wattage"
+							>
+								Wattage
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-psu-wattage"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="wattage" value="550" /><span
+												class="check-box"
+											></span
+											><span>550W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="wattage" value="650" /><span
+												class="check-box"
+											></span
+											><span>650W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="wattage" value="750" /><span
+												class="check-box"
+											></span
+											><span>750W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="wattage" value="850" /><span
+												class="check-box"
+											></span
+											><span>850W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="wattage"
+												value="1000"
+											/><span class="check-box"></span><span>1000W</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="wattage"
+												value="1200"
+											/><span class="check-box"></span
+											><span>1200W+</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="psu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-psu-rating"
+							>
+								80 Plus Rating
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-psu-rating"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="psu-rating"
+												value="80plus"
+											/><span class="check-box"></span
+											><span>80 Plus</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="psu-rating"
+												value="bronze"
+											/><span class="check-box"></span
+											><span>Bronze</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="psu-rating"
+												value="gold"
+											/><span class="check-box"></span><span>Gold</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="psu-rating"
+												value="platinum"
+											/><span class="check-box"></span
+											><span>Platinum</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="psu-rating"
+												value="titanium"
+											/><span class="check-box"></span
+											><span>Titanium</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="psu"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-psu-modular"
+							>
+								Modularity
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-psu-modular"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="modularity"
+												value="full"
+											/><span class="check-box"></span
+											><span>Fully Modular</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="modularity"
+												value="semi"
+											/><span class="check-box"></span
+											><span>Semi-Modular</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="modularity"
+												value="non"
+											/><span class="check-box"></span
+											><span>Non-Modular</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== RAM-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="ram">
+							<span>RAM Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="ram"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-ram-type"
+							>
+								Memory Type
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-ram-type"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-type"
+												value="ddr4"
+											/><span class="check-box"></span><span>DDR4</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-type"
+												value="ddr5"
+											/><span class="check-box"></span><span>DDR5</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="ram"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-ram-capacity"
+							>
+								Kit Capacity
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-ram-capacity"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-capacity"
+												value="16"
+											/><span class="check-box"></span><span>16 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-capacity"
+												value="32"
+											/><span class="check-box"></span><span>32 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-capacity"
+												value="64"
+											/><span class="check-box"></span><span>64 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-capacity"
+												value="96"
+											/><span class="check-box"></span><span>96 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-capacity"
+												value="128"
+											/><span class="check-box"></span
+											><span>128 GB</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="ram"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-ram-speed"
+							>
+								Speed
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-ram-speed"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-speed"
+												value="3200"
+											/><span class="check-box"></span
+											><span>DDR4-3200</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-speed"
+												value="3600"
+											/><span class="check-box"></span
+											><span>DDR4-3600</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-speed"
+												value="5200"
+											/><span class="check-box"></span
+											><span>DDR5-5200</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-speed"
+												value="6000"
+											/><span class="check-box"></span
+											><span>DDR5-6000</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="ram-speed"
+												value="6400"
+											/><span class="check-box"></span
+											><span>DDR5-6400+</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== STORAGE-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="storage">
+							<span>Storage Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="storage"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-storage-type"
+							>
+								Drive Type
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-storage-type"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="drive-type"
+												value="nvme"
+											/><span class="check-box"></span
+											><span>NVMe SSD</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="drive-type"
+												value="sata-ssd"
+											/><span class="check-box"></span
+											><span>SATA SSD</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="drive-type"
+												value="hdd"
+											/><span class="check-box"></span><span>HDD</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="storage"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-storage-capacity"
+							>
+								Capacity
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-storage-capacity"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="storage-cap"
+												value="500"
+											/><span class="check-box"></span
+											><span>500 GB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="storage-cap"
+												value="1000"
+											/><span class="check-box"></span><span>1 TB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="storage-cap"
+												value="2000"
+											/><span class="check-box"></span><span>2 TB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="storage-cap"
+												value="4000"
+											/><span class="check-box"></span><span>4 TB</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="storage-cap"
+												value="8000"
+											/><span class="check-box"></span><span>8 TB+</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="storage"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-storage-gen"
+							>
+								PCIe Generation
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-storage-gen"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="pcie-gen"
+												value="gen3"
+											/><span class="check-box"></span
+											><span>PCIe Gen 3</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="pcie-gen"
+												value="gen4"
+											/><span class="check-box"></span
+											><span>PCIe Gen 4</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="pcie-gen"
+												value="gen5"
+											/><span class="check-box"></span
+											><span>PCIe Gen 5</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===== CASE-SPECIFIC FILTERS ===== -->
+						<div class="filter-section-label" data-category="case">
+							<span>Case Filters</span>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="case"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-case-size"
+							>
+								Case Size
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-case-size"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="case-size"
+												value="full"
+											/><span class="check-box"></span
+											><span>Full Tower</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="case-size"
+												value="mid"
+											/><span class="check-box"></span
+											><span>Mid Tower</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="case-size"
+												value="mini"
+											/><span class="check-box"></span
+											><span>Mini Tower</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="case-size"
+												value="itx"
+											/><span class="check-box"></span
+											><span>ITX / Small Form Factor</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="case"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-case-mb"
+							>
+								Supported Form Factors
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-case-mb"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="case-mb"
+												value="eatx"
+											/><span class="check-box"></span><span>E-ATX</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="case-mb" value="atx" /><span
+												class="check-box"
+											></span
+											><span>ATX</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="case-mb"
+												value="matx"
+											/><span class="check-box"></span
+											><span>Micro-ATX</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="case-mb" value="itx" /><span
+												class="check-box"
+											></span
+											><span>Mini-ITX</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="case"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-case-panel"
+							>
+								Side Panel
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-case-panel"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="panel"
+												value="tempered-glass"
+											/><span class="check-box"></span
+											><span>Tempered Glass</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input
+												type="checkbox"
+												name="panel"
+												value="acrylic"
+											/><span class="check-box"></span
+											><span>Acrylic</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="panel" value="solid" /><span
+												class="check-box"
+											></span
+											><span>Solid Panel</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div
+							class="filter-group filter-group--category"
+							data-category="case"
+						>
+							<button
+								class="filter-group__toggle"
+								aria-expanded="false"
+								aria-controls="filter-case-rgb"
+							>
+								RGB / Lighting
+								<span class="filter-group__arrow" aria-hidden="true">▾</span>
+							</button>
+							<div
+								class="filter-group__body filter-group__body--collapsed"
+								id="filter-case-rgb"
+							>
+								<ul class="filter-checklist" role="list">
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="rgb" value="rgb" /><span
+												class="check-box"
+											></span
+											><span>RGB Included</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="rgb" value="argb" /><span
+												class="check-box"
+											></span
+											><span>ARGB Included</span></label
+										>
+									</li>
+									<li>
+										<label class="filter-check"
+											><input type="checkbox" name="rgb" value="none" /><span
+												class="check-box"
+											></span
+											><span>No RGB</span></label
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /.filters-sidebar__inner -->
+				</aside>
+				<!-- ===== END SIDEBAR ===== -->
+
+				<!-- ===== PRODUCT GRID AREA ===== -->
+				<section class="products-main" aria-label="Product listing">
+					<!-- Active filters bar -->
+					<div class="active-filters" id="active-filters" aria-live="polite">
+						<!-- Active filter tags will be injected here by JS -->
+					</div>
+
+					<!-- Product grid -->
+					<ul class="products-grid" role="list" id="products-grid">
+						<!-- GPU -->
+						<li class="product-card products-card" data-category="gpu">
+							<div class="product-card__top">
+								<span class="product-badge product-badge--hot">Bestseller</span>
+								<span class="product-category">GPU</span>
+							</div>
+							<div class="products-card__image">
+								<img src="/images/4090.jpg" alt="RTX 4090" loading="lazy" />
+							</div>
+							<h3 class="products-card__name">RTX 4090</h3>
+							<p class="products-card__desc">
+								Extreme 4K Gaming GPU — 24GB GDDR6X
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">24 GB VRAM</span>
+								<span class="spec-tag">Ada Lovelace</span>
+								<span class="spec-tag">Ada Lovelace</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$1,699</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<li class="product-card products-card" data-category="gpu">
+							<div class="product-card__top">
+								<span class="product-badge product-badge--rated">4.9 ★</span>
+								<span class="product-category">GPU</span>
+							</div>
+							<div class="products-card__image">
+								<img
+									src="/images/4080S.png"
+									alt="RTX 4080 Super"
+									loading="lazy"
+								/>
+							</div>
+							<h3 class="products-card__name">RTX 4080 Super</h3>
+							<p class="products-card__desc">
+								Elite 1440p / 4K GPU — 16GB GDDR6X
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">16 GB VRAM</span>
+								<span class="spec-tag">Ada Lovelace</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$999</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<!-- CPU -->
+						<li class="product-card products-card" data-category="cpu">
+							<div class="product-card__top">
+								<span class="product-badge product-badge--hot">Popular</span>
+								<span class="product-category">CPU</span>
+							</div>
+							<div class="products-card__image">
+								<img
+									src="/images/7950X.jpg"
+									alt="Ryzen 9 7950X"
+									loading="lazy"
+								/>
+							</div>
+							<h3 class="products-card__name">Ryzen 9 7950X</h3>
+							<p class="products-card__desc">
+								16-Core / 32-Thread Workstation CPU
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">AM5</span>
+								<span class="spec-tag">16 Cores</span>
+								<span class="spec-tag">170W TDP</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$599</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<li class="product-card products-card" data-category="cpu">
+							<div class="product-card__top">
+								<span class="product-badge product-badge--rated">4.8 ★</span>
+								<span class="product-category">CPU</span>
+							</div>
+							<div class="products-card__image">
+								<img
+									src="/images/14900K.jpg"
+									alt="Intel i9-14900K"
+									loading="lazy"
+								/>
+							</div>
+							<h3 class="products-card__name">Intel i9-14900K</h3>
+							<p class="products-card__desc">
+								Next-Gen Gaming & Workstation CPU
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">LGA1700</span>
+								<span class="spec-tag">24 Cores</span>
+								<span class="spec-tag">125W TDP</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$589</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<!-- RAM -->
+						<li class="product-card products-card" data-category="ram">
+							<div class="product-card__top">
+								<span class="product-badge">In Stock</span>
+								<span class="product-category">RAM</span>
+							</div>
+							<div class="products-card__image">
+								<img
+									src="/images/DDR5.jpg"
+									alt="DDR5 32GB Kit"
+									loading="lazy"
+								/>
+							</div>
+							<h3 class="products-card__name">G.Skill Trident Z5 32GB</h3>
+							<p class="products-card__desc">
+								6000MHz High-Speed Dual Channel Memory
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">DDR5</span>
+								<span class="spec-tag">32 GB Kit</span>
+								<span class="spec-tag">6000 MHz</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$189</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<!-- Storage -->
+						<li class="product-card products-card" data-category="storage">
+							<div class="product-card__top">
+								<span class="product-badge product-badge--rated">4.9 ★</span>
+								<span class="product-category">Storage</span>
+							</div>
+							<div class="products-card__image">
+								<img
+									src="/images/SSD.jpg"
+									alt="2TB NVMe Gen4 SSD"
+									loading="lazy"
+								/>
+							</div>
+							<h3 class="products-card__name">Samsung 990 Pro 2TB</h3>
+							<p class="products-card__desc">
+								7,400 MB/s Sequential Read Speed
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">NVMe</span>
+								<span class="spec-tag">PCIe Gen 4</span>
+								<span class="spec-tag">2 TB</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$159</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<!-- Placeholder cards to fill the grid -->
+						<li
+							class="product-card products-card products-card--placeholder"
+							data-category="motherboard"
+						>
+							<div class="product-card__top">
+								<span class="product-badge">New</span>
+								<span class="product-category">Motherboard</span>
+							</div>
+							<div class="products-card__image products-card__image--empty">
+								<span class="image-placeholder-icon" aria-hidden="true"
+									>🖥</span
+								>
+							</div>
+							<h3 class="products-card__name">ASUS ROG Crosshair X670E</h3>
+							<p class="products-card__desc">
+								Extreme AM5 Gaming Motherboard — ATX
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">AM5</span>
+								<span class="spec-tag">X670E</span>
+								<span class="spec-tag">DDR5</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$649</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<li
+							class="product-card products-card products-card--placeholder"
+							data-category="psu"
+						>
+							<div class="product-card__top">
+								<span class="product-badge">In Stock</span>
+								<span class="product-category">PSU</span>
+							</div>
+							<div class="products-card__image products-card__image--empty">
+								<span class="image-placeholder-icon" aria-hidden="true"
+									>⚡</span
+								>
+							</div>
+							<h3 class="products-card__name">Seasonic Prime TX-1000</h3>
+							<p class="products-card__desc">
+								1000W Fully Modular — 80 Plus Titanium
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">1000W</span>
+								<span class="spec-tag">Titanium</span>
+								<span class="spec-tag">Fully Modular</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$299</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<li
+							class="product-card products-card products-card--placeholder"
+							data-category="case"
+						>
+							<div class="product-card__top">
+								<span class="product-badge product-badge--hot">Popular</span>
+								<span class="product-category">Case</span>
+							</div>
+							<div class="products-card__image products-card__image--empty">
+								<span class="image-placeholder-icon" aria-hidden="true"
+									>🗄</span
+								>
+							</div>
+							<h3 class="products-card__name">Lian Li O11 Dynamic EVO</h3>
+							<p class="products-card__desc">
+								Mid Tower — Dual Chamber Layout, Tempered Glass
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">Mid Tower</span>
+								<span class="spec-tag">ATX</span>
+								<span class="spec-tag">Tempered Glass</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$149</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<!-- More placeholder cards to fill the grid nicely -->
+						<li
+							class="product-card products-card products-card--placeholder"
+							data-category="gpu"
+						>
+							<div class="product-card__top">
+								<span class="product-badge">In Stock</span>
+								<span class="product-category">GPU</span>
+							</div>
+							<div class="products-card__image products-card__image--empty">
+								<span class="image-placeholder-icon" aria-hidden="true"
+									>🎮</span
+								>
+							</div>
+							<h3 class="products-card__name">RX 7900 XTX</h3>
+							<p class="products-card__desc">AMD Flagship GPU — 24GB GDDR6</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">24 GB VRAM</span>
+								<span class="spec-tag">RDNA 3</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$899</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<li
+							class="product-card products-card products-card--placeholder"
+							data-category="cpu"
+						>
+							<div class="product-card__top">
+								<span class="product-badge">In Stock</span>
+								<span class="product-category">CPU</span>
+							</div>
+							<div class="products-card__image products-card__image--empty">
+								<span class="image-placeholder-icon" aria-hidden="true"
+									>⚙️</span
+								>
+							</div>
+							<h3 class="products-card__name">Ryzen 7 7800X3D</h3>
+							<p class="products-card__desc">
+								Gaming King — 3D V-Cache Technology
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">AM5</span>
+								<span class="spec-tag">8 Cores</span>
+								<span class="spec-tag">120W TDP</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$349</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+
+						<li
+							class="product-card products-card products-card--placeholder"
+							data-category="ram"
+						>
+							<div class="product-card__top">
+								<span class="product-badge product-badge--rated">4.8 ★</span>
+								<span class="product-category">RAM</span>
+							</div>
+							<div class="products-card__image products-card__image--empty">
+								<span class="image-placeholder-icon" aria-hidden="true"
+									>💾</span
+								>
+							</div>
+							<h3 class="products-card__name">Corsair Dominator 64GB</h3>
+							<p class="products-card__desc">
+								DDR5-6200 Titanium Kit — Quad Channel
+							</p>
+							<div class="products-card__specs">
+								<span class="spec-tag">DDR5</span>
+								<span class="spec-tag">64 GB Kit</span>
+								<span class="spec-tag">6200 MHz</span>
+							</div>
+							<div class="product-card__bottom">
+								<span class="price">$329</span>
+								<a href="#" class="product-link">View →</a>
+							</div>
+						</li>
+					</ul>
+
+					<!-- Pagination -->
+					<nav class="products-pagination" aria-label="Product pages">
+						<button
+							class="pagination-btn pagination-btn--prev"
+							disabled
+							aria-label="Previous page"
+						>
+							← Prev
+						</button>
+						<div class="pagination-pages">
+							<button
+								class="pagination-page pagination-page--active"
+								aria-current="page"
+								aria-label="Page 1"
+							>
+								1
+							</button>
+							<button class="pagination-page" aria-label="Page 2">2</button>
+							<button class="pagination-page" aria-label="Page 3">3</button>
+							<span class="pagination-ellipsis" aria-hidden="true">…</span>
+							<button class="pagination-page" aria-label="Page 12">12</button>
+						</div>
+						<button
+							class="pagination-btn pagination-btn--next"
+							aria-label="Next page"
+						>
+							Next →
+						</button>
+					</nav>
+				</section>
+				<!-- ===== END PRODUCT GRID ===== -->
+			</div>
+		</main>
+
+		<%- include('../partials/footer') %>
+	</body>
+
+	<script>
+		// Frontend code (running on a different port)
+		fetch("http://localhost:8001/api/products") // replace with your API endpoint
+			.then((response) => {
+				if (!response.ok) throw new Error("Network response was not ok");
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data); // display in console
+			})
+			.catch((error) => console.error("Fetch error:", error));
+	</script>
+</html>
