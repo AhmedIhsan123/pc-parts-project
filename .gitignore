@@ -1,5 +1,8 @@
 node_modules
 .env
+docker-compose.yml
+products.json
+images/
 docker-compose.yaml
 products.json
 mysql_data/

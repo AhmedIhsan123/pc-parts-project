@@ -11,14 +11,21 @@ export async function getProductById(id) {
 }
 
 const SORT_MAP = {
-	"featured":   "id ASC",
-	"price-asc":  "price ASC",
+	featured: "id ASC",
+	"price-asc": "price ASC",
 	"price-desc": "price DESC",
-	"rating":     "rating DESC",
-	"name-asc":   "product_name ASC",
+	rating: "rating DESC",
+	"name-asc": "product_name ASC",
 };
 
-export async function searchProducts({ category, brand, minPrice, maxPrice, minRating, sort } = {}) {
+export async function searchProducts({
+	category,
+	brand,
+	minPrice,
+	maxPrice,
+	minRating,
+	sort,
+} = {}) {
 	const conditions = [];
 	const params = [];
 
@@ -29,7 +36,9 @@ export async function searchProducts({ category, brand, minPrice, maxPrice, minR
 		conditions.push("category_name = ?");
 		params.push(categories[0]);
 	} else if (categories.length > 1) {
-		conditions.push(`category_name IN (${categories.map(() => "?").join(", ")})`);
+		conditions.push(
+			`category_name IN (${categories.map(() => "?").join(", ")})`,
+		);
 		params.push(...categories);
 	}
 
@@ -54,8 +63,13 @@ export async function searchProducts({ category, brand, minPrice, maxPrice, minR
 		params.push(minRating);
 	}
 
-	const whereClause = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+	const whereClause = conditions.length
+		? `WHERE ${conditions.join(" AND ")}`
+		: "";
 	const orderClause = `ORDER BY ${SORT_MAP[sort] ?? SORT_MAP["featured"]}`;
-	const [rows] = await pool.query(`SELECT * FROM products ${whereClause} ${orderClause}`, params);
+	const [rows] = await pool.query(
+		`SELECT * FROM products ${whereClause} ${orderClause}`,
+		params,
+	);
 	return rows;
 }
