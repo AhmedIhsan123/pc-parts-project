@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 document.addEventListener("DOMContentLoaded", () => {
 
 const productPage = document.querySelector(".product-detail-page");
