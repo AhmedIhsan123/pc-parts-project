@@ -10,36 +10,48 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const requireAuth = async (req, res, next) => {
-    try {
-        // We forward the cookie from the user's request to the API
-        const response = await fetch(`http://localhost:8001/auth/check`, {
-            headers: { cookie: req.headers.cookie || "" }
-        });
+const setLocals = async (req, res, next) => {
+	try {
+		const response = await fetch(`http://localhost:8001/auth/check`, {
+			headers: { cookie: req.headers.cookie || "" },
+		});
+		res.locals.user = response.ok ? (await response.json()).user : null;
+	} catch {
+		res.locals.user = null;
+	}
+	next();
+};
 
-        if (response.ok) { return next(); } // User is logged in, proceed to the page 
-        
-        // Not logged in? Redirect to login page
-        return res.redirect("/login");
-    } catch (error) {
-        console.error("Auth middleware error:", error);
-        return res.redirect("/login");
-    }
+app.use(setLocals);
+
+const requireAuth = async (req, res, next) => {
+	try {
+		const response = await fetch(`http://localhost:8001/auth/check`, {
+			headers: { cookie: req.headers.cookie || "" },
+		});
+
+		if (response.ok) return next();
+
+		return res.redirect("/login");
+	} catch (error) {
+		console.error("Auth middleware error:", error);
+		return res.redirect("/login");
+	}
 };
 
 // Specific routes first
 app.get("/login", (req, res) => {
-  res.render("login-page/login", {
-        title: "Login",
-        errors: req.query.errors || null
-    });
+	res.render("login-register-page/login-register", {
+		title: "Login",
+		errors: req.query.errors || null,
+	});
 });
 
 app.get("/register", (req, res) => {
-  res.render("login-page/register", {
-        title: "Register",
-        errors: req.query.errors || null
-    });
+	res.render("login-register-page/login-register", {
+		title: "Register",
+		errors: req.query.errors || null,
+	});
 });
 
 app.get("/products", requireAuth, (req, res) => {
@@ -57,7 +69,6 @@ app.get("/products/:id", requireAuth, async (req, res) => {
 		console.error(error);
 		res.status(500).send("Error loading product");
 	}
-
 });
 
 app.get("/checkout", (req, res) => {
