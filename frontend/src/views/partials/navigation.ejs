@@ -24,7 +24,9 @@
 
 	<div class="nav-links">
 		<a href="/products">Products</a>
-		<% if (!user) { %>
+		<% if (user) { %>
+			<a class="btn-logout" id="logoutBtn">Logout</a>
+		<% } else { %>
 			<a href="/login">Login/Register</a>
 		<% } %>
 		<a href="/checkout" aria-label="Open cart" aria-haspopup="dialog">
@@ -39,3 +41,16 @@
 		<div class="account-circle"></div>
 	</div>
 </nav>
+
+<script>
+	const logoutBtn = document.getElementById("logoutBtn");
+	if (logoutBtn) {
+		logoutBtn.addEventListener("click", async () => {
+			await fetch("http://localhost:8001/logout", {
+				method: "GET",
+				credentials: "include",
+			});
+			window.location.href = "/login";
+		});
+	}
+</script>
