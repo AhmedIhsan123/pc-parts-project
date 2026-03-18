@@ -11,10 +11,16 @@
 		<link rel="stylesheet" href="/css/base/nav.css" />
 		<link rel="stylesheet" href="/css/base/footer.css" />
 		<link rel="stylesheet" href="/css/base/cursor.css" />
+		<link rel="stylesheet" href="/css/base/search.css" />
 
 		<!-- Landing page scripts -->
 		<script src="/js/landing.js" defer></script>
 		<script src="/js/cursor.js" defer></script>
+		<script src="/js/global-search.js" defer></script>
+
+
+		<!-- icons  -->
+		<script src="https://unpkg.com/lucide@latest"></script>
 
 		<!-- Fonts -->
 		<link
@@ -294,4 +300,8 @@
 
 		<%- include('../partials/footer') %>
 	</body>
+	<script>
+		// create lucide icons
+		lucide.createIcons();
+	</script>
 </html>

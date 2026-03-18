@@ -1,4 +1,5 @@
 import * as productsService from "../services/products.service.js";
+import { pool } from "../model/db.connect.js";
 
 export const getAllProducts = async (req, res) => {
 	try {
@@ -119,3 +120,28 @@ export const renderProductsPage = async (req, res) => {
 		res.status(500).send("Error loading products page");
 	}
 };
+
+//search products for global search (returns only id, name, price, image_urls)
+export async function globalSearchProducts(req, res) {
+ 
+const search = req.query.search || "";
+
+	try {
+
+		const [rows] = await pool.query(`
+		SELECT id, product_name, price, image_url
+		FROM products
+		WHERE product_name LIKE ?
+		LIMIT 10
+		`, [`%${search}%`]);
+
+		res.json(rows);
+
+	} catch (err) {
+
+		console.error(err);
+		res.status(500).json({ error: "search failed" });
+
+	}
+
+}

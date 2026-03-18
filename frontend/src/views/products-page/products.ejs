@@ -11,9 +11,15 @@
 		<link rel="stylesheet" href="/css/base/nav.css" />
 		<link rel="stylesheet" href="/css/base/footer.css" />
 		<link rel="stylesheet" href="/css/base/cursor.css" />
+		<link rel="stylesheet" href="/css/base/search.css" />
 
 		<script src="/js/cursor.js" defer></script>
 		<script src="/js/products.js" defer></script>
+		<script src="/js/global-search.js" defer></script>
+		
+
+		<!-- icons  -->
+		<script src="https://unpkg.com/lucide@latest"></script>
 
 		<!-- Fonts -->
 		<link
@@ -472,6 +478,9 @@
 	</body>
 
 	<script>
+		// create lucide icons
+		lucide.createIcons();
+
 		// Frontend code (running on a different port)
 		fetch("http://localhost:8001/api/products") // replace with your API endpoint
 			.then((response) => {
