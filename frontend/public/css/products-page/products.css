@@ -733,3 +733,23 @@
 		flex: 1;
 	}
 }
+
+/* =========================================
+   CART DRAWER — products page overrides
+   Ensures the drawer and backdrop always sit
+   above the mobile filter sidebar (z-index 200)
+   and the page background grid (z-index 0).
+   The base drawer styles live in cart-drawer.css.
+   ========================================= */
+
+.cart-backdrop {
+	z-index: 300;
+}
+
+.cart-drawer {
+	z-index: 301;
+}
+
+.cart-backdrop.is-open ~ * .filters-sidebar {
+	z-index: 0;
+}

@@ -34,6 +34,11 @@ app.get("/products/:id", async (req, res) => {
 	}
 
 });
+
+app.get("/checkout", (req, res) => {
+	res.render("checkout-page/checkout");
+});
+
 // Catch-all LAST
 app.get("/", (req, res) => {
 	res.render("landing-page/landing.ejs");

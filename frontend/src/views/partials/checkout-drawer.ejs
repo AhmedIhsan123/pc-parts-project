@@ -1,0 +1,40 @@
+<!-- Backdrop -->
+<div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+
+<!-- Drawer -->
+<aside
+	class="cart-drawer"
+	id="cartDrawer"
+	aria-label="Shopping cart"
+	aria-hidden="true"
+	role="dialog"
+	tabindex="-1"
+>
+	<!-- Header -->
+	<div class="cart-drawer__header">
+		<h2 class="cart-drawer__title">Your Cart</h2>
+		<button
+			class="cart-drawer__close"
+			id="cartClose"
+			aria-label="Close cart"
+		>&#x2715;</button>
+	</div>
+
+	<!-- Item list -->
+	<div class="cart-drawer__body">
+		<div class="cart-empty">
+			<span class="cart-empty__icon" aria-hidden="true">🛒</span>
+			<p class="cart-empty__msg">Your cart is empty.</p>
+			<a href="/products" class="btn btn-primary cart-empty__cta">Shop Components</a>
+		</div>
+	</div>
+
+	<!-- Footer (hidden while cart is empty) -->
+	<div class="cart-drawer__footer cart-drawer__footer--hidden">
+		<div class="cart-summary">
+			<span class="cart-summary__label">Subtotal</span>
+			<span class="cart-summary__value" id="cartSubtotal">$0.00</span>
+		</div>
+		<a href="/checkout" class="btn btn-primary cart-checkout-btn">Proceed to Checkout</a>
+	</div>
+</aside>
