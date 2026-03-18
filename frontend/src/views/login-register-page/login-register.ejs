@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SurgeForge — Auth</title>
+		<link rel="stylesheet" href="/css/base/styles.css" />
+		<link rel="stylesheet" href="/css/login-register-page/login-register.css" />
+		<link rel="stylesheet" href="/css/base/cursor.css" />
+		<script src="/js/cursor.js" defer></script>
+	</head>
+	<body>
+		<main class="container">
+			<div class="custom-cursor"></div>
+
+			<section class="card form-card">
+				<!-- Go back -->
+				<a href="/" class="btn-back">
+					<svg
+						viewBox="0 0 16 16"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M13 8H3M7 4L3 8l4 4"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+					Back
+				</a>
+
+				<!-- Tab switcher -->
+				<div class="auth-tabs">
+					<button class="auth-tab active" data-tab="login">Login</button>
+					<button class="auth-tab" data-tab="register">Register</button>
+					<div class="auth-tab-indicator"></div>
+				</div>
+
+				<!-- Error message (shared) -->
+				<p id="error" class="error" style="display: none"></p>
+
+				<!-- ── LOGIN FORM ── -->
+				<div class="auth-panel active" id="panel-login">
+					<form id="loginForm" autocomplete="off">
+						<div class="form-group">
+							<label for="login-username">Username</label>
+							<input
+								id="login-username"
+								type="text"
+								name="username"
+								placeholder="your_handle"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label for="login-password">Password</label>
+							<input
+								id="login-password"
+								type="password"
+								name="password"
+								placeholder="••••••••"
+								required
+							/>
+						</div>
+						<button type="submit" class="btn-primary">
+							<span>Login</span>
+							<svg
+								class="btn-arrow"
+								viewBox="0 0 16 16"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M3 8h10M9 4l4 4-4 4"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</form>
+					<p class="auth-switch">
+						No account? <a href="#" data-switch="register">Register</a>
+					</p>
+				</div>
+
+				<!-- ── REGISTER FORM ── -->
+				<div class="auth-panel" id="panel-register">
+					<form id="registerForm" autocomplete="off">
+						<div class="form-group">
+							<label for="reg-username">Username</label>
+							<input
+								id="reg-username"
+								type="text"
+								name="username"
+								placeholder="your_handle"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label for="reg-password">Password</label>
+							<input
+								id="reg-password"
+								type="password"
+								name="password"
+								placeholder="••••••••"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label for="reg-confirm">Confirm Password</label>
+							<input
+								id="reg-confirm"
+								type="password"
+								name="confirm"
+								placeholder="••••••••"
+								required
+							/>
+							<span class="field-hint" id="confirmHint"></span>
+						</div>
+						<button type="submit" class="btn-primary">
+							<span>Create Account</span>
+							<svg
+								class="btn-arrow"
+								viewBox="0 0 16 16"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M3 8h10M9 4l4 4-4 4"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</form>
+					<p class="auth-switch">
+						Already have an account? <a href="#" data-switch="login">Login</a>
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<script>
+			/* ── TAB SWITCHING ── */
+			const tabs = document.querySelectorAll(".auth-tab");
+			const panels = document.querySelectorAll(".auth-panel");
+			const indicator = document.querySelector(".auth-tab-indicator");
+			const errorEl = document.getElementById("error");
+
+			function showError(msg) {
+				errorEl.textContent = msg;
+				errorEl.style.display = "block";
+				errorEl.classList.remove("error-animate");
+				void errorEl.offsetWidth;
+				errorEl.classList.add("error-animate");
+			}
+			function clearError() {
+				errorEl.style.display = "none";
+				errorEl.textContent = "";
+			}
+
+			function switchTab(name) {
+				clearError();
+				tabs.forEach((t) => {
+					const isActive = t.dataset.tab === name;
+					t.classList.toggle("active", isActive);
+					if (isActive) {
+						indicator.style.left = t.offsetLeft + "px";
+						indicator.style.width = t.offsetWidth + "px";
+					}
+				});
+				panels.forEach((p) =>
+					p.classList.toggle("active", p.id === "panel-" + name),
+				);
+			}
+
+			tabs.forEach((t) =>
+				t.addEventListener("click", () => switchTab(t.dataset.tab)),
+			);
+
+			document.querySelectorAll("[data-switch]").forEach((a) => {
+				a.addEventListener("click", (e) => {
+					e.preventDefault();
+					switchTab(a.dataset.switch);
+				});
+			});
+
+			window.addEventListener("DOMContentLoaded", () => {
+				const active = document.querySelector(".auth-tab.active");
+				if (active) {
+					indicator.style.left = active.offsetLeft + "px";
+					indicator.style.width = active.offsetWidth + "px";
+				}
+			});
+
+			/* ── LOGIN ── */
+			document
+				.getElementById("loginForm")
+				.addEventListener("submit", async (e) => {
+					e.preventDefault();
+					clearError();
+					const form = e.target;
+					const btn = form.querySelector('button[type="submit"]');
+					btn.classList.add("loading");
+
+					const res = await fetch("http://localhost:8001/login", {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						credentials: "include",
+						body: JSON.stringify({
+							username: form.username.value,
+							password: form.password.value,
+						}),
+					});
+
+					btn.classList.remove("loading");
+					const data = await res.json();
+
+					if (res.ok) {
+						window.location.href = "/products";
+					} else {
+						showError(data.error || "Login failed.");
+					}
+				});
+
+			/* ── REGISTER ── */
+			document
+				.getElementById("registerForm")
+				.addEventListener("submit", async (e) => {
+					e.preventDefault();
+					clearError();
+					const form = e.target;
+					const btn = form.querySelector('button[type="submit"]');
+
+					if (form.password.value !== form.confirm.value) {
+						showError("Passwords do not match.");
+						return;
+					}
+
+					btn.classList.add("loading");
+
+					const res = await fetch("http://localhost:8001/register", {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						credentials: "include",
+						body: JSON.stringify({
+							username: form.username.value,
+							password: form.password.value,
+							confirm: form.confirm.value,
+						}),
+					});
+
+					btn.classList.remove("loading");
+
+					if (res.ok) {
+						switchTab("login");
+					} else {
+						const data = await res.json();
+						showError(data.error || "Registration failed.");
+					}
+				});
+
+			/* ── CONFIRM PASSWORD HINT ── */
+			document
+				.getElementById("reg-confirm")
+				.addEventListener("input", function () {
+					const hint = document.getElementById("confirmHint");
+					const pass = document.getElementById("reg-password").value;
+					if (!this.value) {
+						hint.textContent = "";
+						return;
+					}
+					if (this.value === pass) {
+						hint.textContent = "✓ Passwords match";
+						hint.className = "field-hint match";
+					} else {
+						hint.textContent = "✗ Passwords do not match";
+						hint.className = "field-hint mismatch";
+					}
+				});
+		</script>
+	</body>
+</html>

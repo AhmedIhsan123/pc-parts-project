@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 document.addEventListener("DOMContentLoaded", () => {
 
 const productPage = document.querySelector(".product-detail-page");
@@ -342,46 +343,37 @@ ADD TO CART ANIMATION
 
 const addBtn = document.querySelector(".add-to-cart-btn");
 
-if(addBtn){
+if (addBtn) {
 
-addBtn.addEventListener("click",()=>{
+    addBtn.addEventListener("click", () => {
 
-addBtn.innerHTML = `
-<i data-lucide="check"></i>
-Added to Cart
-`;
+        // animation
+        addBtn.innerHTML = `
+        <i data-lucide="check"></i>
+        Added to Cart
+        `;
+        lucide.createIcons();
 
-lucide.createIcons();
+        // open drawer
+        const drawer = document.getElementById("cartDrawer");
+        const backdrop = document.getElementById("cartBackdrop");
 
-/* scale animation instead of flip */
+        if (drawer && backdrop) {
+            drawer.classList.add("is-open");
+            backdrop.classList.add("is-open");
+        }
 
-const icon = addBtn.querySelector("svg");
+        setTimeout(() => {
+            addBtn.innerHTML = `
+            <i data-lucide="shopping-cart"></i>
+            Add to Cart
+            `;
+            lucide.createIcons();
+        }, 3000);
 
-icon.style.transform = "scale(1.25)";
-icon.style.transition = "transform .4s ease";
-
-setTimeout(()=>{
-icon.style.transform = "scale(1)";
-},200);
-
-/* stay longer before reset */
-
-setTimeout(()=>{
-
-addBtn.innerHTML = `
-<i data-lucide="shopping-cart"></i>
-Add to Cart
-`;
-
-lucide.createIcons();
-
-},4000);
-
-});
+    });
 
 }
-
-
 
 /* =========================
 WISHLIST BUTTON

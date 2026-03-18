@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/css/base/footer.css">
 <link rel="stylesheet" href="/css/base/cursor.css">
 <link rel="stylesheet" href="/css/base/search.css" />
+<link rel="stylesheet" href="/css/base/cart-drawer.css" />
 
 <script src="/js/cursor.js" defer></script>
 <script src="/js/product-detail.js" defer></script>
@@ -213,7 +214,7 @@ ACTION BUTTONS
 
 <div class="product-buttons">
 
-<button class="btn-primary add-to-cart-btn">
+<button class="btn-primary add-to-cart-btn" data-id="<%= product.id %>">
 
 <i data-lucide="shopping-cart"></i>
 
@@ -498,11 +499,14 @@ Cancel
 
 
 <%- include("../partials/footer") %>
-
+<%- include("../partials/checkout-drawer") %>
 
 <script>
 lucide.createIcons();
 </script>
+
+<script src="/js/product-detail.js" defer></script>
+<script src="/js/cart-drawer.js" defer></script>
 
 </body>
 </html>
