@@ -12,25 +12,35 @@
 >
 	<!-- Header -->
 	<div class="cart-drawer__header">
-		<h2 class="cart-drawer__title">Your Cart</h2>
-		<button
-			class="cart-drawer__close"
-			id="cartClose"
-			aria-label="Close cart"
-		>&#x2715;</button>
+		<div class="cart-drawer__title-row">
+			<h2 class="cart-drawer__title">Your Cart</h2>
+			<span class="cart-item-count" id="cartItemCount" aria-live="polite"></span>
+		</div>
+		<button class="cart-drawer__close" id="cartClose" aria-label="Close cart">&#x2715;</button>
 	</div>
 
-	<!-- Item list -->
-	<div class="cart-drawer__body">
-		<div class="cart-empty">
-			<span class="cart-empty__icon" aria-hidden="true">🛒</span>
+	<!-- Body: toggled between empty state and item list by JS -->
+	<div class="cart-drawer__body" id="cartBody">
+
+		<!-- Empty state (shown by default, hidden via JS when items exist) -->
+		<div class="cart-empty" id="cartEmpty">
+			<span class="cart-empty__icon" aria-hidden="true">&#x1F6D2;</span>
 			<p class="cart-empty__msg">Your cart is empty.</p>
 			<a href="/products" class="btn btn-primary cart-empty__cta">Shop Components</a>
 		</div>
+
+		<!-- Item list (populated by cart-drawer.js renderCart()) -->
+		<ul
+			class="cart-item-list"
+			id="cartItemList"
+			role="list"
+			aria-label="Cart items"
+		></ul>
+
 	</div>
 
-	<!-- Footer (hidden while cart is empty) -->
-	<div class="cart-drawer__footer cart-drawer__footer--hidden">
+	<!-- Footer -->
+	<div class="cart-drawer__footer" id="cartFooter">
 		<div class="cart-summary">
 			<span class="cart-summary__label">Subtotal</span>
 			<span class="cart-summary__value" id="cartSubtotal">$0.00</span>

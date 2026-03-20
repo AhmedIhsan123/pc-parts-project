@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="/css/base/cart-drawer.css" />
 
 <script src="/js/cursor.js" defer></script>
-<script src="/js/product-detail.js" defer></script>
 <script src="/js/global-search.js" defer></script>
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -214,7 +213,13 @@ ACTION BUTTONS
 
 <div class="product-buttons">
 
-<button class="btn-primary add-to-cart-btn" data-id="<%= product.id %>">
+<button
+	class="btn-primary add-to-cart-btn"
+	data-id="<%= product.id %>"
+	data-name="<%= product.product_name %>"
+	data-price="<%= product.price %>"
+	data-image="<%= product.image_url || '' %>"
+>
 
 <i data-lucide="shopping-cart"></i>
 

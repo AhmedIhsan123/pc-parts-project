@@ -124,7 +124,14 @@ function renderPage(products, page) {
         <span class="price">$${Number(p.price).toFixed(2)}</span>
         <a href="/products/${p.id}" class="product-link">View →</a>
       </div>
-          `;
+      <button
+        class="btn btn-primary add-to-cart-btn"
+        data-id="${p.id}"
+        data-name="${p.product_name.replace(/"/g, "&quot;")}"
+        data-price="${Number(p.price).toFixed(2)}"
+        data-image="${p.image_url ?? ""}"
+      >Add to Cart</button>
+    `;
     grid.appendChild(li);
   });
 }

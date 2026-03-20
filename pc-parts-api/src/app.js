@@ -5,6 +5,7 @@ import cors from "cors";
 import productsRoutes from "./routers/products.routes.js";
 import pagesRoutes from "./routers/pages.routes.js";
 import authRoutes from "./routers/auth.routes.js";
+import cartRoutes from "./routers/cart.routes.js";
 
 //configure Express.js app
 const app = express();
@@ -38,5 +39,6 @@ app.use(session({
 app.use("/api/products", productsRoutes);
 app.use("/", pagesRoutes);
 app.use("/", authRoutes);
+app.use('/api/cart', cartRoutes);
 
 export default app;
