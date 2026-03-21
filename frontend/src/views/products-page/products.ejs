@@ -486,7 +486,7 @@
 		lucide.createIcons();
 
 		// Frontend code (running on a different port)
-		fetch("http://localhost:8001/api/products") // replace with your API endpoint
+		fetch(("http://localhost:8001/api/products"), {credentials: "include" })// replace with your API endpoint
 			.then((response) => {
 				if (!response.ok) throw new Error("Network response was not ok");
 				return response.json();

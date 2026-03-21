@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import * as productsService from "../services/products.service.js";
 import { pool } from "../model/db.connect.js";
 
@@ -145,3 +146,22 @@ const search = req.query.search || "";
 	}
 
 }
+
+export const authorizeAPI = async (req, res, next) => {
+  try {
+    const response = await fetch("http://localhost:8001/auth/check", {
+      headers: {
+        cookie: req.headers.cookie || "",
+      },
+    });
+
+    if (response.ok) {
+      return next();
+    }
+
+    return res.status(401).json({ message: "Unauthorized" });
+  } catch (error) {
+    console.error("Auth middleware error:", error);
+    return res.status(500).json({ message: "Auth check failed" });
+  }
+};

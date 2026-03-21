@@ -79,7 +79,7 @@ async function fetchProducts(filters) {
 
   if (!hasFilters) {
     history.replaceState(null, "", window.location.pathname);
-    const res = await fetch(API_BASE);
+    const res = await fetch((API_BASE), { credentials: "include" });
     if (!res.ok) throw new Error("Failed to fetch products");
     return res.json();
   }
@@ -88,7 +88,7 @@ async function fetchProducts(filters) {
 
   history.replaceState(null, "", `${window.location.pathname}?${queryString}`);
 
-  const res = await fetch(`${API_BASE}/search?${queryString}`);
+  const res = await fetch((`${API_BASE}/search?${queryString}`), { credentials: "include"} );
   if (!res.ok) return [];
   return res.json();
 }
