@@ -86,17 +86,21 @@ PORT=8002
 
 ### 3. Set up the database
 
-Run the following scripts against your MySQL instance in order:
+Make sure your Docker container is running, then open phpMyAdmin in your browser at `http://localhost:8080`. Log in with the root credentials configured in your Docker setup.
 
-```bash
-# 1. Create the schema (drops and recreates the pcparts database)
-mysql -u root -p < pc-parts-api/src/scripts/schema.sql
+Once logged in, import the two database scripts in order:
 
-# 2. Seed initial product and category data
-mysql -u root -p < pc-parts-api/src/scripts/seed.sql
-```
+**Step 1 — Import the schema**
+1. In the left sidebar, click on the target database (or select **SQL** from the top nav to run against the server).
+2. Click the **Import** tab.
+3. Under **File to import**, click **Choose File** and select `pc-parts-api/src/scripts/schema.sql`.
+4. Scroll down and click **Import**. This will drop and recreate the `pcparts` database with the `categories`, `products`, and `users` tables.
 
-The schema creates three tables: `categories`, `products`, and `users`.
+**Step 2 — Import the seed data**
+1. In the left sidebar, click on the **pcparts** database that was just created.
+2. Click the **Import** tab.
+3. Under **File to import**, click **Choose File** and select `pc-parts-api/src/scripts/seed.sql`.
+4. Scroll down and click **Import**. This will populate the `categories` and `products` tables with initial data.
 
 ### 4. Install dependencies and start the servers
 
