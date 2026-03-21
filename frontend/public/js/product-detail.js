@@ -21,7 +21,7 @@ if (!productId) {
 FETCH PRODUCT DATA
 ========================= */
 
-fetch(`http://localhost:8001/api/products/${productId}`)
+fetch((`http://localhost:8001/api/products/${productId}`), { credentials: "include" })
 .then(res => res.json())
 .then(product => {
 
@@ -265,7 +265,7 @@ if(window.lucide){
 SIMILAR PRODUCTS
 ========================= */
 
-fetch("http://localhost:8001/api/products")
+fetch(("http://localhost:8001/api/products"), { credentials: "include" })
 .then(res=>res.json())
 .then(products=>{
 

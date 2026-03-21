@@ -1,15 +1,12 @@
 import express from "express";
 import * as productsController from "../controllers/products.controller.js";
+import { authorizeAPI } from "../controllers/products.controller.js";
 
 const router = express.Router();
 
-router.get("/", productsController.getAllProducts);
-
-router.get("/search", productsController.searchProducts);
-
-router.get("/search-global", productsController.globalSearchProducts);
-
-router.get("/:id", productsController.getProductById);
-
+router.get("/", authorizeAPI, productsController.getAllProducts);
+router.get("/search", authorizeAPI, productsController.searchProducts);
+router.get("/search-global", authorizeAPI, productsController.globalSearchProducts);
+router.get("/:id", authorizeAPI, productsController.getProductById);
 
 export default router;

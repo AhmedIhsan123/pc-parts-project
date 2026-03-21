@@ -61,7 +61,7 @@ app.get("/products", requireAuth, (req, res) => {
 app.get("/products/:id", requireAuth, async (req, res) => {
 	const id = req.params.id;
 	try {
-		const response = await fetch(`http://localhost:8001/api/products/${id}`);
+		const response = await fetch((`http://localhost:8001/api/products/${id}`), { credentials: "include" });
 		const product = await response.json();
 
 		res.render("products-page/product-detail", { product });
